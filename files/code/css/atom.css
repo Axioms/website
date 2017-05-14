@@ -1,0 +1,265 @@
+element.style {
+}
+
+.hero-app-14 {
+    fill: #394754;
+    animation: hero-app-animate-left .8s 4.56s both;
+}
+
+.hero-app {
+    fill: #6798a2;
+    transform-origin: 50% 50%;
+}
+.hero-app-13 {
+    fill: #3c4c58;
+    animation: hero-app-animate-right .8s 4.52s both;
+}
+
+.hero-app {
+    fill: #6798a2;
+    transform-origin: 50% 50%;
+}
+.hero-app-12 {
+    fill: #3e505c;
+    animation: hero-app-animate-left .8s 4.48s both;
+}
+
+.hero-app {
+    fill: #6798a2;
+    transform-origin: 50% 50%;
+}
+.hero-app-11 {
+    fill: #415460;
+    animation: hero-app-animate-right .8s 4.44s both;
+}
+
+.hero-app {
+    fill: #6798a2;
+    transform-origin: 50% 50%;
+}
+.hero-app-10 {
+    fill: #435864;
+    animation: hero-app-animate-left .8s 4.4s both;
+}
+
+.hero-app {
+    fill: #6798a2;
+    transform-origin: 50% 50%;
+}
+.hero-app-9 {
+    fill: #455d68;
+    animation: hero-app-animate-right .8s 4.36s both;
+}
+
+.hero-app {
+    fill: #6798a2;
+    transform-origin: 50% 50%;
+}
+.hero-app-8 {
+    fill: #48616c;
+    animation: hero-app-animate-left .8s 4.32s both;
+}
+
+.hero-app {
+    fill: #6798a2;
+    transform-origin: 50% 50%;
+}
+.hero-app-7 {
+    fill: #4a6571;
+    animation: hero-app-animate-right .8s 4.28s both;
+}
+
+.hero-app {
+    fill: #6798a2;
+    transform-origin: 50% 50%;
+}
+.hero-app-6 {
+    fill: #4d6975;
+    animation: hero-app-animate-left .8s 4.24s both;
+}
+
+.hero-app {
+    fill: #6798a2;
+    transform-origin: 50% 50%;
+}
+.hero-app-5 {
+    fill: #4f6e79;
+    animation: hero-app-animate-right .8s 4.2s both;
+}
+
+.hero-app {
+    fill: #6798a2;
+    transform-origin: 50% 50%;
+}
+.hero-app-4 {
+    fill: #51727d;
+    animation: hero-app-animate-left .8s 4.16s both;
+}
+
+.hero-app {
+    fill: #6798a2;
+    transform-origin: 50% 50%;
+}
+.hero-app-3 {
+    fill: #547681;
+    animation: hero-app-animate-right .8s 4.12s both;
+}
+
+.hero-app {
+    fill: #6798a2;
+    transform-origin: 50% 50%;
+}
+.hero-app-2 {
+    fill: #567a85;
+    animation: hero-app-animate-left .8s 4.08s both;
+}
+
+.hero-app {
+    fill: #6798a2;
+    transform-origin: 50% 50%;
+}
+.hero-app-1 {
+    fill: #597f89;
+    animation: hero-app-animate-right .8s 4.04s both;
+}
+
+.hero-app {
+    fill: #6798a2;
+    transform-origin: 50% 50%;
+}
+.hero-icon.loop-3 {
+    transform: translate(79px, 21px);
+    opacity: 1;
+}
+
+
+.hero-icon-1 {
+    animation: hero-icon-animation-t 1.2s 1.2s cubic-bezier(0.5, 0, 0.2, 1) both,hero-icon-animation-o 0.4s 3.8s both;
+}
+
+.hero-icon {
+    fill: #9feaf9;
+    opacity: .1;
+    transform-origin: 50% 50%;
+}
+.hero-icon.loop-2 {
+    transform: translate(166px, -88px);
+}
+
+.hero-icon-2 {
+    animation: hero-icon-animation-t 1.2s 1.4s cubic-bezier(0.5, 0, 0.2, 1) both,hero-icon-animation-o 0.4s 3.9s both;
+}
+
+.hero-icon {
+    fill: #9feaf9;
+    opacity: .1;
+    transform-origin: 50% 50%;
+}
+.hero-icon {
+    fill: #9feaf9;
+    opacity: .1;
+    transform-origin: 50% 50%;
+}
+.hero-icon.loop-1 {
+    transform: translate(-51px, -128px);
+}
+
+.hero-icon-3 {
+    animation: hero-icon-animation-t 1.2s 1.6s cubic-bezier(0.5, 0, 0.2, 1) both,hero-icon-animation-o 0.4s 3.93333s both;
+}
+.hero-icon.short-3 {
+    transform: translate(65px, -18px) rotate(-17deg);
+}
+
+.hero-icon-4 {
+    animation: hero-icon-animation-t 1.2s 1.8s cubic-bezier(0.5, 0, 0.2, 1) both,hero-icon-animation-o 0.4s 3.95s both;
+}
+.hero-icon.short-2 {
+    transform: translate(-20px, 61px) rotate(106deg);
+}
+
+.hero-icon-5 {
+    animation: hero-icon-animation-t 1.2s 2s cubic-bezier(0.5, 0, 0.2, 1) both,hero-icon-animation-o 0.4s 3.96s both;
+}
+
+.hero-icon {
+    fill: #9feaf9;
+    opacity: .1;
+    transform-origin: 50% 50%;
+}
+.hero-icon.short-1 {
+    transform: translate(119px, 37px) rotate(-134deg);
+}
+
+.hero-icon-6 {
+    animation: hero-icon-animation-t 1.2s 2.2s cubic-bezier(0.5, 0, 0.2, 1) both,hero-icon-animation-o 0.4s 3.96667s both;
+}
+
+.hero-icon {
+    fill: #9feaf9;
+    opacity: .1;
+    transform-origin: 50% 50%;
+}
+.hero-icon.long-3 {
+    transform: translate(-64px, 20px) rotate(13deg);
+}
+
+.hero-icon-7 {
+    animation: hero-icon-animation-t 1.2s 2.4s cubic-bezier(0.5, 0, 0.2, 1) both,hero-icon-animation-o 0.4s 3.97143s both;
+}
+
+.hero-icon {
+    fill: #9feaf9;
+    opacity: .1;
+    transform-origin: 50% 50%;
+}
+.hero-icon.long-2 {
+    transform: translate(-35px, 8px) rotate(133deg);
+    opacity: 1;
+}
+
+.hero-icon-8 {
+    animation: hero-icon-animation-t 1.2s 2.6s cubic-bezier(0.5, 0, 0.2, 1) both,hero-icon-animation-o 0.4s 3.975s both;
+}
+
+.hero-icon {
+    fill: #9feaf9;
+    opacity: .1;
+    transform-origin: 50% 50%;
+}
+.hero-icon.long-1 {
+    transform: translate(-101px, -45px) rotate(-107deg);
+}
+
+.hero-icon-9 {
+    animation: hero-icon-animation-t 1.2s 2.8s cubic-bezier(0.5, 0, 0.2, 1) both,hero-icon-animation-o 0.4s 3.97778s both;
+}
+
+.hero-icon {
+    fill: #9feaf9;
+    opacity: .1;
+    transform-origin: 50% 50%;
+}
+.hero-icon.dot {
+    transform: translate(35px, -37px);
+    opacity: 1;
+}
+
+.hero-icon-10 {
+    animation: hero-icon-animation-t 1.2s 3s cubic-bezier(0.5, 0, 0.2, 1) both,hero-icon-animation-o 0.4s 3.98s both;
+}
+
+.hero-icon {
+    fill: #9feaf9;
+    opacity: .1;
+    transform-origin: 50% 50%;
+}
+.jumbotron {
+    color: #74b1be;
+    background-color: #2b2e3b;
+    -webkit-font-smoothing: antialiased;
+}
+
+.text-center {
+    text-align: center !important;
+}

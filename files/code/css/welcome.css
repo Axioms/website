@@ -1,0 +1,26 @@
+* {
+  //border: 1px #fff solid;
+}
+
+#title {
+  display: inline;
+  font-size: 55px;
+  font-family: 'Montserrat', sans-serif;
+  color: #ffffff;
+}
+
+#titlebox {
+  padding-top: px;
+  text-align: center;
+  width: 100%;
+}
+
+line {
+  stroke :rgb(100, 100, 100);
+}
+
+#splash {
+  height: 420px;
+  width: 100%;
+  overflow: hidden;
+}

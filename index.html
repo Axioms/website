@@ -1,14 +1,18 @@
 <!DOCTYPE html>
   <html>
+    <!-- Why are you here? -->
+
+    <!-- go away, no no don't look at the code -->
     <head>
       <title>Bit's website</title>
-      <link href="files/images/favicon.ico" rel="icon">
-      <link rel="stylesheet" type="text/css" href="files/code/css/menu.css">
+      <link href="files/images/favicon.ico" rel="icon"/>
+      <link rel="stylesheet" href="files/code/css/menu.css"/>
+      <link rel="stylesheet" href="files/code/css/welcome.css"/>
+      <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     </head>
     <body>
-        <div id="menu">
+      <div id="menu">
           <ul>
-
             <li>
               <a class="menu_text" id="First_menu_text" href="index.html">HomePage</a>
             </li>
@@ -22,10 +26,30 @@
             </li>
 
             <li>
-              <a class="menu_text" href="downloads.html">Downloads</a>
+                <a class="menu_text" href="filemanager/index.php">File Manager</a>
             </li>
 
+            <li>
+              <a class="menu_text" href="downloads.html">Downloads</a>
+            </li>
           </ul>
         </div>
-    </body>
+        <iframe id="splash" src="welcomemessage.html" frameBorder="0" scrolling="no"></iframe>
+        <div id="titlebox">
+            <svg height="50" width="100">
+              <line x1="0" y1="0" x2="100" y2="0" style="stroke-width: 11;"/>
+              <line x1="20" y1="20" x2="100" y2="20" style="stroke-width: 6;"/>
+              <line x1="30" y1="40" x2="100" y2="40" style="stroke-width: 6;"/>
+            </svg>
+
+          <a id="title">Welcome to my website.</a>
+
+          <svg height="50" width="100">
+            <line x1="100" y1="0" x2="0" y2="0" style="stroke-width: 11;"/>
+            <line x1="0" y1="20" x2="80" y2="20" style="stroke-width: 6;"/>
+            <line x1="0" y1="40" x2="70" y2="40" style="stroke-width: 6;"/>
+          </svg>
+        </div>
+
+     </body>
   </html>
