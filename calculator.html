@@ -3,29 +3,31 @@
     <head>
       <title>Calculator</title>
       <link href="files/images/favicon.ico" rel="icon">
-      <link rel="stylesheet" type="text/css" href="files/code/css/menu.css">
-      <link rel="stylesheet" type="text/css" href="files/code/css/calc.css">
+      <link rel="stylesheet" href="files/code/css/menu.css">
+      <link rel="stylesheet" href="files/code/css/calc.css">
     </head>
     <body>
       <div id="menu">
         <ul>
-
           <li>
-            <a class="menu_text" id="First_menu_text" href="index.html">HomePage</a>
+            <a class="menu_text" href="index.html">HomePage</a>
           </li>
 
           <li>
-            <a class="menu_text" href="calculator.html">Calculator</a>
+            <a class="menu_text" id="First_menu_text" href="calculator.html">Calculator</a>
           </li>
 
           <li>
-            <a class="menu_text" href="phpproxy.php">PHP Proxy</a>
+            <a class="menu_text" href="files/php-proxy/index.php">PHP Proxy</a>
+          </li>
+
+          <li>
+              <a class="menu_text" href="filemanager/index.php">File Manager</a>
           </li>
 
           <li>
             <a class="menu_text" href="downloads.html">Downloads</a>
           </li>
-
         </ul>
       </div>
 
@@ -66,7 +68,7 @@
             <TR>
               <TD ALIGN="center"><INPUT TYPE="button" VALUE="(" ONCLICK="addChar(this.form.display, '(')"></TD>
               <TD ALIGN="center"><INPUT TYPE="button" VALUE="cos" ONCLICK="if (checkNum(this.form.display.value)) { cos(this.form) }"></TD>
-              <TD ALIGN="center"><INPUT TYPE="button" VALUE="Sin" ONCLICK="if (checkNum(this.form.display.value)) { sin(this.form) }"></TD>
+              <TD ALIGN="center"><INPUT TYPE="button" VALUE="sin" ONCLICK="if (checkNum(this.form.display.value)) { sin(this.form) }"></TD>
               <TD ALIGN="center"><INPUT TYPE="button" VALUE="tan" ONCLICK="if (checkNum(this.form.display.value)) { tan(this.form) }"></TD>
               <TD ALIGN="center"><INPUT TYPE="button" VALUE=")" ONCLICK="addChar(this.form.display, ')')"></TD>
             </TR>
