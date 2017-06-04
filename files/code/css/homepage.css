@@ -1,0 +1,11 @@
+.iframe {
+  position: absolute;
+  margin: auto;
+  width: 99%;
+  overflow: hidden;
+  height: 99%;
+}
+
+.mainframe {
+  padding-top: 50px;
+}

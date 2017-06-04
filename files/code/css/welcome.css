@@ -1,7 +1,3 @@
-* {
-  //border: 1px #fff solid;
-}
-
 #title {
   display: inline;
   font-size: 55px;
@@ -10,7 +6,7 @@
 }
 
 #titlebox {
-  padding-top: px;
+  padding-top: 0px;
   text-align: center;
   width: 100%;
 }
@@ -23,4 +19,15 @@ line {
   height: 420px;
   width: 100%;
   overflow: hidden;
+}
+
+#dot {
+	transform: rotate(45deg);
+	display: inline;
+	padding: auto;
+}
+
+.wings {
+	padding: 0px;
+	margin: 0px;
 }
