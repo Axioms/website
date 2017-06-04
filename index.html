@@ -9,47 +9,34 @@
       <link rel="stylesheet" href="files/code/css/menu.css"/>
       <link rel="stylesheet" href="files/code/css/welcome.css"/>
       <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+	     <link rel="stylesheet" href="files/code/css/homepage.css"/>
     </head>
     <body>
       <div id="menu">
           <ul>
             <li>
-              <a class="menu_text" id="First_menu_text" href="index.html">HomePage</a>
+              <a class="menu_text" id="First_menu_text" href="homepage.html" target="frame">HomePage</a>
             </li>
 
             <li>
-              <a class="menu_text" href="calculator.html">Calculator</a>
+              <a class="menu_text" href="calculator.html" target="frame">Calculator</a>
             </li>
 
             <li>
-              <a class="menu_text" href="files/php-proxy/index.php">PHP Proxy</a>
+              <a class="menu_text" href="files/php-proxy/index.php" target="frame">PHP Proxy</a>
             </li>
 
             <li>
-                <a class="menu_text" href="filemanager/index.php">File Manager</a>
+                <a class="menu_text" href="filemanager/index.php" target="frame">File Manager</a>
             </li>
 
             <li>
-              <a class="menu_text" href="downloads.html">Downloads</a>
+              <a class="menu_text" href="downloads.html" target="frame">Downloads</a>
             </li>
           </ul>
-        </div>
-        <iframe id="splash" src="welcomemessage.html" frameBorder="0" scrolling="no"></iframe>
-        <div id="titlebox">
-            <svg height="50" width="100">
-              <line x1="0" y1="0" x2="100" y2="0" style="stroke-width: 11;"/>
-              <line x1="20" y1="20" x2="100" y2="20" style="stroke-width: 6;"/>
-              <line x1="30" y1="40" x2="100" y2="40" style="stroke-width: 6;"/>
-            </svg>
-
-          <a id="title">Welcome to my website.</a>
-
-          <svg height="50" width="100">
-            <line x1="100" y1="0" x2="0" y2="0" style="stroke-width: 11;"/>
-            <line x1="0" y1="20" x2="80" y2="20" style="stroke-width: 6;"/>
-            <line x1="0" y1="40" x2="70" y2="40" style="stroke-width: 6;"/>
-          </svg>
-        </div>
-
+      </div>
+      <div class="mainframe">
+        <iframe class="iframe" name="frame" src="homepage.html" scrolling="no" frameborder="0"/>
+      </div>
      </body>
   </html>
