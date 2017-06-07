@@ -1,8 +1,5 @@
 <!DOCTYPE html>
   <html>
-    <!-- Why are you here? -->
-
-    <!-- go away, no no don't look at the code -->
     <head>
       <title>Bit's website</title>
       <link href="files/images/favicon.ico" rel="icon"/>
@@ -15,28 +12,43 @@
       <div id="menu">
           <ul>
             <li>
-              <a class="menu_text" id="First_menu_text" href="homepage.html" target="frame">HomePage</a>
+              <div class="headerButton">
+                <a id="menu_text" class="inactive firstMenuItemText" href="homepage.html" target="frame">HomePage</a>
+              </div>
             </li>
 
             <li>
-              <a class="menu_text" href="calculator.html" target="frame">Calculator</a>
+              <div class="headerButton">
+                <a id="menu_text" class="inactive" href="calculator.html" target="frame">Calculator</a>
+              </div>
             </li>
 
             <li>
-              <a class="menu_text" href="files/php-proxy/index.php" target="frame">PHP Proxy</a>
+              <div class="headerButton">
+                <a id="menu_text" class="inactive" href="files/php-proxy/index.php" target="frame">PHP Proxy</a>
+              </div>
             </li>
 
             <li>
-                <a class="menu_text" href="filemanager/index.php" target="frame">File Manager</a>
+              <div class="headerButton">
+                <a id="menu_text" class="inactive" href="filemanager/index.php" target="frame">File Manager</a>
+              </div>
             </li>
 
             <li>
-              <a class="menu_text" href="downloads.html" target="frame">Downloads</a>
+              <div class="headerButton">
+                <a id="menu_text" class="inactive" href="downloads.html" target="frame">Downloads</a>
+              </div>
             </li>
           </ul>
       </div>
+
+      <script src="files/code/jquary/jquery-3.2.1.min.js"></script>
+      <script src="files/code/javascript/header.js"></script>
+
       <div class="mainframe">
         <iframe class="iframe" name="frame" src="homepage.html" scrolling="no" frameborder="0"/>
       </div>
+
      </body>
   </html>

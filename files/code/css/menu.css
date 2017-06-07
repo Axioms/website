@@ -25,7 +25,7 @@ li {
   float   : left;
 }
 
-.menu_text {
+#menu_text {
   display          : block;
   padding          : 14px 16px;
   color            : #ffffff;
@@ -33,10 +33,13 @@ li {
   text-decoration  : none;
 }
 
-.menu_text:hover {
+#menu_text:hover {
   background-color : #111;
 }
 
-#First_menu_text {
+.active {
   background-color : #7891C7;
+}
+.inactive {
+  /*background-color: #545454;*/
 }
