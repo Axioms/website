@@ -2,25 +2,27 @@
   <html>
       <head>
         <link rel="stylesheet" href="files/code/css/menu.css" />
-        <link rel="stylesheet" href="files/code/css/mario.css" />
+        <link rel="stylesheet" href="files/code/css/cypher.css" />
         <script src="files/code/jquary/jquery-3.2.1.min.js"></script>
-        <script src="files/code/javascript/mario.js"></script>
-        <script src="files/code/javascript/mario2.js"></script>
       </head>
       <body>
         <div class="main">
-          <p id="heading">Mario's cypher</p>
+          <p id="heading">Willson's cypher</p>
           <div id="hub">
           <div class="userinput">
             <textarea id="input" autofocus="true" placeholder="Write text you want cyphered here!" cols="60" rows="20"></textarea>
           <div id="logDiv">
             <p class="log">output</p>
-            <p id="log" class="log"></P>
+            <p id="log" class="log"></p>
           </div>
           </div>
           <button class="button" onclick="cypher()">Cypher</button>
-          <button class="button" onclick="decrypt()">Decrypt</button>
+          <button class="button" onclick="decypher()">Decypher</button>
+          <button class="button" id="copyButton" onclick="copyToClipboard(document.getElementById('log').innerHTML)">Copy to clipboard</button>
           </div>
         </div>
+        <script src="files/code/javascript/cypher.js"></script>
+        <script src="files/code/javascript/decypher.js"></script>
+        <script src="files/code/javascript/copy.js"></script>
       </body>
     </html>
