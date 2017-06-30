@@ -1,4 +1,4 @@
-function decrypt() {
+function decypher() {
   var cypher = document.getElementById('input').value;
   var len = $('#input').val().length;
 
