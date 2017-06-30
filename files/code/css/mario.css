@@ -1,0 +1,50 @@
+.main {
+  margin: auto;
+}
+
+#heading {
+  padding-top: 5%;
+  text-align: center;
+  font-size: 40px;
+  color: #fff;
+  font-family: sans-serif;
+}
+
+#input {
+  background-color: #545454;
+  border: none;
+  margin-top: 5%;
+  color: #fff;
+  display: inline-block;
+}
+
+.button {
+  display: inline-block;
+}
+
+#logDiv {
+  margin-top: 5%;
+  height: 295px;
+  width: 300px;
+  display: inline-block;
+  background: #4a4a44;
+  vertical-align: top;
+  padding: 5px;
+}
+
+#log {
+  display: inline;
+  text-align: justify;
+  font-size: 18px;
+}
+
+.log{
+  text-align: center;
+  color: #fff;
+  font-size: 20px;
+}
+
+#hub {
+ width: 755px;
+ margin: 0 auto;
+}
