@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+  <html>
+      <head>
+        <link rel="stylesheet" href="files/code/css/menu.css" />
+        <link rel="stylesheet" href="files/code/css/mario.css" />
+        <script src="files/code/jquary/jquery-3.2.1.min.js"></script>
+        <script src="files/code/javascript/mario.js"></script>
+        <script src="files/code/javascript/mario2.js"></script>
+      </head>
+      <body>
+        <div class="main">
+          <p id="heading">Mario's cypher</p>
+          <div id="hub">
+          <div class="userinput">
+            <textarea id="input" autofocus="true" placeholder="Write text you want cyphered here!" cols="60" rows="20"></textarea>
+          <div id="logDiv">
+            <p class="log">output</p>
+            <p id="log" class="log"></P>
+          </div>
+          </div>
+          <button class="button" onclick="cypher()">Cypher</button>
+          <button class="button" onclick="decrypt()">Decrypt</button>
+          </div>
+        </div>
+      </body>
+    </html>
