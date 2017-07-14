@@ -57,10 +57,10 @@ input[type=button]:hover {
 }
 
 input[name=equal] {
-    background-color: #4d90fe;
+    background-color: #334d99;
     background-image: linear-gradient(top, #4d90fe, #4787ed);
-    border: 1px solid #3079ed;
-    color: #fefefe;
+    border: 1px solid #334d99;
+    color: #DCDCDC;
 }
 
 input[name=equal]:hover {
