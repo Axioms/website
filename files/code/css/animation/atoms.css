@@ -2014,7 +2014,7 @@ h1 code,h2 code,h3 code,h4 code{background-color:#e2e8e9}
 @keyframes hero-icons-animation{50%{transform:scale(1.1)}
 }
 .hero-icon{fill:#ededed;opacity:.1;transform-origin:50% 50%}
-.hero-icon.dot{transform:translate(35px, -37px);opacity:1;fill: #334d99}
+.hero-icon.dot{transform:translate(35px, -37px);opacity:1;fill: #792424/*#334d99*/}
 .hero-icon.short-1{transform:translate(119px, 37px) rotate(-134deg)}
 .hero-icon.short-2{transform:translate(-20px, 61px) rotate(106deg)}
 .hero-icon.short-3{transform:translate(65px, -18px) rotate(-17deg)}
