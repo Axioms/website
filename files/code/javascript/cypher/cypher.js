@@ -1,4 +1,5 @@
 function cypher() {
+    "use strict";
   var hPhrase = document.getElementById('input').value;
   var lPhrase = hPhrase.toLowerCase();
   var len = $('#input').val().length;
