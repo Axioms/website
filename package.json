@@ -1,0 +1,29 @@
+{
+  "name": "Website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^4.1.1",
+    "jquery": "^3.3.1",
+    "jquery-color": "^1.0.0",
+    "react": "^16.4.0",
+    "svg.js": "^2.6.5",
+    "vue": "^2.5.16"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Axioms/Website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Axioms/Website/issues"
+  },
+  "homepage": "https://github.com/Axioms/Website#readme"
+}

@@ -1,3 +1,0 @@
-function velocity() {
-    "use strict";
-}
