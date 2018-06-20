@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+    <html>
+        <head></head>
+        <body>
+            <div id="sidebar">
+                <style>
+                    #sidebar {
+                        font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+                    }
+                    
+                    #sb-branding{
+                        text-align: center;
+                    }
+                    #sb-main, #sb-nav {
+                        top                    : 0px;
+                        left                   : 0px;
+                        display                : block;
+                        position               : fixed;
+                        width                  : 100%;
+                        height                 : 100%;
+                    }
+                    
+                    .sb-item {
+                        display: grid;
+                        grid-template-columns: auto auto auto auto auto;
+                        grid-column-gap        : 0px;
+                        grid-row-gap           : 0px;
+                        width                  : 100%;
+                        height                 : 10%;
+
+                    }
+
+                    .sb-faded-line {
+                        border-bottom         : 1px solid transparent;
+                        -moz-border-image     : -moz-linear-gradient(top, rgba(186, 190, 196,0) 0%, rgba(186, 190, 196,1) 50%,rgba(186, 190, 196,0) 100%);
+                        -webkit-border-image  : -webkit-linear-gradient(top, rgba(186, 190, 196,0) 0%, rgba(186, 190, 196,1) 50%,rgba(186, 190, 196,0) 100%);
+                        border-image          : linear-gradient(to right, rgba(186, 190, 196,0) 10%, rgba(186, 190, 196,1) 50%,rgba(186, 190, 196,0) 90%);
+                        border-image-slice    : 1;
+                    }
+
+                    .sb-text {
+                        grid-column-start      : 2;
+                        grid-column-end        : 4;
+                    }
+
+                    .sb-text p {
+                        
+                        margin: 0px;
+                        display               : block;
+                        position              : relative;
+                        text-align            : center;
+                        top                   : 50%;
+                        transform             : translateY(-50%); 
+                    }
+
+                    .sb-image {
+                        grid-column-start     : 4;
+                        grid-column-end       : 5;
+                    }
+
+                    .sb-image img {
+                        width                 : auto;
+                        height                : 60%;
+                        display               : block;
+                        margin                : auto;
+                        top                   : 20%;
+                        position              : relative;
+                    }
+                </style>
+                    <div id="sb-main">
+                        <div id="sb-nav">
+                                <div id="sb-branding" class="sb-faded-line">
+                                    apples are great
+                                </div>
+                            <a>
+                                <div class="sb-item sb-faded-line">
+                                    <div class="sb-text">
+                                        <p>Home</p>
+                                    </div>
+                                    <div class="sb-image">
+                                        <img src="res/images/nav/home.svg"/>
+                                    </div>
+                                </div>
+                            </a>
+                            <a>
+                                <div class="sb-item sb-faded-line">
+                                    <div class="sb-text">
+                                        <p>Calc</p>
+                                    </div>
+                                    <div class="sb-image">
+                                        <img src="res/images/nav/calendar.svg"/>
+                                    </div>
+                                </div>
+                            </a>
+                            <a>
+                                <div class="sb-item sb-faded-line">
+                                    <div class="sb-text">
+                                        <p>Downloads</p>
+                                    </div>
+                                    <div class="sb-image">
+                                        <img src="res/images/nav/arrow-down.svg"/>
+                                    </div>
+                                </div>
+                            </a>
+                            <a>
+                                <div class="sb-item sb-faded-line">
+                                    <div class="sb-text">
+                                        <p>FileExplorer</p>
+                                    </div>
+                                    <div class="sb-image">
+                                        <img src="res/images/nav/file-directory.svg"/>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+            </div>
+        </body>
+    </html>
