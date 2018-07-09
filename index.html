@@ -9,6 +9,7 @@
         <link rel="stylesheet" type="text/css" media="screen" href="res/bootstrap-sidebar/bootstrap-sidebar.css" />
         <link rel="stylesheet" type="text/css" media="screen" href="res/main/css/main.css" />
         <link rel="stylesheet" type="text/css" media="screen" href="res/index/css/index.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="res/font-awesome/css/all.css" />
         <script src="res/jquery/js/jquery-3.3.1.min.js"></script>
         <script src="res/bootstrap-sidebar/bootstrap-sidebar.js"></script>
         <script src="res/main/js/main.js"></script>
@@ -16,9 +17,83 @@
     </head>
     <body>
         <div class="fluid-container">
-            <div id="sb-main">
-                <div class="sb-logo">
+            <div id="sb-main" class="sb-gradient-vertical sb-gradient-right">
+                <div class="sb-logo sb-gradient-bottom">
                     <img src="res/images/branding/logo-dark-with-wings.svg"/>
+                </div>
+                <div class="sb-links">
+                    <ul>
+                        <li>
+                            <a href="#home">
+                                <div class="sb-item sb-gradient-bottom sb-active">
+                                    <div class="sb-link">
+                                        <p>Home</p>
+                                    </div>
+                                    <div class="sb-icon">
+                                        <span class="d-none d-md-block">
+                                            <i class="fas fa-home"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#calculator">
+                                <div class="sb-item sb-gradient-bottom">
+                                    <div class="sb-link">
+                                        <p>Calculator</p>
+                                    </div>
+                                    <div class="sb-icon">
+                                        <span class="d-none d-md-block">
+                                            <i class="fas fa-calculator"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#fileManger">
+                                <div class="sb-item sb-gradient-bottom">
+                                    <div class="sb-link">
+                                        <p>File Manager</p>
+                                    </div>
+                                    <div class="sb-icon ">
+                                        <span class="d-none d-md-block">
+                                            <i class="far fa-folder"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#VPN">
+                                <div class="sb-item sb-gradient-bottom">
+                                    <div class="sb-link">
+                                        <p>VPN</p>
+                                    </div>
+                                    <div class="sb-icon">
+                                        <span class="d-none d-md-block">
+                                            <i class="fas fa-server"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#downloads">
+                                <div class="sb-item sb-gradient-bottom">
+                                    <div class="sb-link">
+                                        <p>Downloads</p>
+                                    </div>
+                                    <div class="sb-icon">
+                                        <span class="d-none d-md-block">
+                                            <i class="fas fa-arrow-down"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div id="sb-page-content">
