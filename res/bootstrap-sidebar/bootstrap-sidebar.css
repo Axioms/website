@@ -30,8 +30,85 @@
         --sidebar-size: 0%;
         --pageData-size: 0%;
     }
+    .sb-navbar {
+        width: 100%;
+        padding-bottom: 5%;
+        background-color: #f2f2f2;
+    }
+    .sb-navbar img {
+        margin-top: 4%;
+        margin-left: 4%;
+        height: 40px;
+        width: 40px;
+        display: inline-block;
+    }
+    .sb-navbar p{
+        display: inline;
+        text-align: center;
+        margin: 0px;
+    }
+    .sb-navbar i {
+        padding: 6%;
+        display: inline;
+        text-align: right;
+        float: right;
+        font-size: 1.5em;
+    }
     .sb-logo img{
         display: none;
+    }
+    .sb-links ul {
+        list-style-type: none;
+        padding: 0px;
+        margin: 0px;
+        text-align: center;
+    }
+    .sb-link::before {
+        content:'';
+        width:100%;
+        position: absolute;
+        display: block;
+        height: 1px;
+        background: #c6c6c6;
+        background: 
+            -moz-linear-gradient(to left, rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%);
+        background: 
+            -ms-linear-gradient(to left, rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%);
+        background: 
+            -o-linear-gradient(to left, rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%);
+        background: 
+            linear-gradient(to left, rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%);
+    }
+    .sb-link::after {
+        content:'';
+        width:100%;
+        position: absolute;
+        display: block;
+        height: 1px;
+        background: #c6c6c6;
+        background: 
+            -moz-linear-gradient(to left, rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%);
+        background: 
+            -ms-linear-gradient(to left, rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%);
+        background: 
+            -o-linear-gradient(to left, rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%);
+        background: 
+            linear-gradient(to left, rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%);
+    }
+    .sb-link p {
+        text-align: center;
+        margin: 0%;
+        padding: 4% 0%;
+    }
+    .sb-active {
+        background-color: #f2f2f2;
+    }
+    #page-content-wrapper {
+        width: 100%;
+        height: 100%;
+        left: 0;
+        display: block;
+        position: absolute;
     }
 }
 @media screen and (min-width: 768px){
@@ -52,7 +129,6 @@
     }
     .sb-logo {
         width: 100%;
-        height: 20%;
         display: block;
     }
     .sb-logo img{
@@ -169,5 +245,10 @@
     }
     .sb-active {
         background-color: #f2f2f2;
+    }
+    #page-content-wrapper {
+        width: 100%;
+        height: 100%;
+        left: 0;
     }
 }     
