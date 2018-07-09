@@ -63,6 +63,9 @@
         margin: 0px;
         text-align: center;
     }
+    .sb-navbar-toggle-thing {
+        cursor: pointer;
+    }
     .sb-link::before {
         content:'';
         width:100%;
