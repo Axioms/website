@@ -15,14 +15,21 @@
         <script src="res/main/js/main.js"></script>
         <script src="res/index/js/index.js"></script>
     </head>
-    <body>
+    <body onresize="smallWindowSetUp()">
         <div class="fluid-container">
             <div id="sb-main" class="sb-gradient-vertical sb-gradient-right">
-                <div class="sb-logo sb-gradient-bottom">
+                <div class="sb-logo sb-gradient-bottom d-none d-md-block">
                     <img src="res/images/branding/logo-dark-with-wings.svg"/>
                 </div>
                 <div class="sb-links">
-                    <ul>
+                    <div class="sb-navbar d-md-none d-lg-none d-xl-none">
+                        <img src="res/images/branding/logo-dark.svg"/>
+                        <span class="" onclick="smallWindowToggle()">
+                                <i class="fas fa-bars"></i>
+                            </span>
+                        
+                    </div>
+                    <ul class="sb-data">
                         <li>
                             <a href="#home">
                                 <div class="sb-item sb-gradient-bottom sb-active">
@@ -97,7 +104,7 @@
                 </div>
             </div>
             <div id="sb-page-content">
-                
+                <iframe name="frame" id="page-content-wrapper" frameBorder="0" src="">
             </div>
         </div>
     </body>
