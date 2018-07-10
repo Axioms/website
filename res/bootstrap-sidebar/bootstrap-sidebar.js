@@ -1,19 +1,13 @@
-var neededPadding;
+var neededTopPadding;
 $(document).ready(function(){
     smallWindowSetUp();
 })
 function smallWindowSetUp() {
     if($(document).width() <= 768) {
-        setNeededPadding();
         $(".sb-data").css({"height" : "0%"});
     }
     else {
         $("#sb-page-content").animate({"padding-top" : "0px"}, 1000, function(){});
-    }
-}
-function setNeededPadding() {
-    if(neededPadding == undefined && neededPadding != "0px") {
-        neededPadding = $(".sb-data").css("height");
     }
 }
 function smallWindowToggle() {
@@ -21,7 +15,7 @@ function smallWindowToggle() {
         $(".sb-data").animate({height: "100%"}, 1000, function(){
             $(".sb-data").css({"height" : ""});
         });
-        $("#sb-page-content").animate({"padding-top" : neededPadding}, 1000, function(){});
+        $("#sb-page-content").animate({"padding-top" : "69%"}, 1000, function(){});
     }
     else {
         $(".sb-data").animate({height: "0%"},1000,function(){});
@@ -30,14 +24,22 @@ function smallWindowToggle() {
 }
 function largeWindowToggle() {
     if($(".sb-link").css("height") == "0px") {
-        $(".sb-link").animate({width: "66%", height: "100%"}, 1000, function(){});
+        $(".sb-link").animate({width: "66%", height: "100%"}, 1000, function(){
+            $(".sb-link").css({height : ""});
+        });
+        $("#sb-page-content").animate({"padding-left": "20%"}, 1000, function(){});
+        $(".sb-icon").animate({"font-size" : "1rem"}, 1000, function(){});
         $("#sb-main").animate({width: "20%"}, 1000, function(){});
         $("#win-toggle-a").prop("title", "Collapse");
         flipArrow();
     }
     else {
-        $(".sb-link").animate({width: "0px", height: "0px"}, 1000, function(){});
-        $("#sb-main").animate({width: "5%"}, 1000, function(){});
+        $(".sb-link").animate({width: "0px", height: "0px"}, 1000, function(){       
+        });
+        $("#sb-page-content").animate({"padding-left": "10%"}, 1000, function(){});
+        
+        $(".sb-icon").animate({"font-size" : "2rem"}, 1000, function(){});
+        $("#sb-main").animate({width: "10%"}, 1000, function(){});
         $("#win-toggle-a").prop("title", "Expand");
         flipArrow();
     }

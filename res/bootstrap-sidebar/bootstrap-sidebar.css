@@ -37,6 +37,13 @@
         width: 100%;
         padding-bottom: 5%;
         background-color: #f2f2f2;
+        border-bottom: 1px solid transparent;
+
+	    -moz-border-image: -moz-linear-gradient(right, rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%);
+	    -webkit-border-image: -webkit-linear-gradient(right, rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%);
+	    border-image: linear-gradient(to right, rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%);
+
+	    border-image-slice: 1;
     }
     .sb-navbar img {
         margin-top: 4%;
