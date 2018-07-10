@@ -1,17 +1,31 @@
+var neededPadding;
 $(document).ready(function(){
     smallWindowSetUp();
 })
 function smallWindowSetUp() {
     if($(document).width() <= 768) {
+        setNeededPadding();
         $(".sb-data").css({"height" : "0%"});
+    }
+    else {
+        $("#sb-page-content").animate({"padding-top" : "0px"}, 1000, function(){});
+    }
+}
+function setNeededPadding() {
+    if(neededPadding == undefined && neededPadding != "0px") {
+        neededPadding = $(".sb-data").css("height");
     }
 }
 function smallWindowToggle() {
     if($(".sb-data").css("height") == "0px"){
-        $(".sb-data").animate({height: "100%"},1000,function(){});
+        $(".sb-data").animate({height: "100%"}, 1000, function(){
+            $(".sb-data").css({"height" : ""});
+        });
+        $("#sb-page-content").animate({"padding-top" : neededPadding}, 1000, function(){});
     }
     else {
         $(".sb-data").animate({height: "0%"},1000,function(){});
+        $("#sb-page-content").animate({"padding-top" : "0px"}, 1000, function(){});
     }
 }
 function largeWindowToggle() {
