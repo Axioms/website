@@ -5,6 +5,7 @@ $(document).ready(function(){
 function smallWindowSetUp() {
     if($(document).width() <= 768) {
         $(".sb-data").css({"height" : "0%"});
+        $('div').removeAttr('style');
     }
     else {
         $("#sb-page-content").animate({"padding-top" : "0px"}, 1000, function(){});
@@ -12,20 +13,25 @@ function smallWindowSetUp() {
 }
 function smallWindowToggle() {
     if($(".sb-data").css("height") == "0px"){
+        $("#sb-page-content").stop(true);
+        $("#sb-page-content").animate({"padding-top" : "69%"}, 1000, function(){});
         $(".sb-data").animate({height: "100%"}, 1000, function(){
             $(".sb-data").css({"height" : ""});
         });
-        $("#sb-page-content").animate({"padding-top" : "69%"}, 1000, function(){});
     }
     else {
-        $(".sb-data").animate({height: "0%"},1000,function(){});
+        $("#sb-page-content").stop(true);
         $("#sb-page-content").animate({"padding-top" : "0px"}, 1000, function(){});
+        $(".sb-data").animate({height: "0%"},1000,function(){
+            $('div').removeAttr('style');
+        });
     }
 }
 function largeWindowToggle() {
     if($(".sb-link").css("height") == "0px") {
         $(".sb-link").animate({width: "66%", height: "100%"}, 1000, function(){
             $(".sb-link").css({height : ""});
+            $('div').removeAttr('style');
         });
         $("#sb-page-content").animate({"padding-left": "20%"}, 1000, function(){});
         $(".sb-icon").animate({"font-size" : "1rem"}, 1000, function(){});
@@ -53,4 +59,7 @@ function flipArrow() {
         $("#arrow").removeClass("fa-arrow-right");
         $("#arrow").addClass("fa-arrow-left");
     }
+}
+function clean() {
+    $('div').removeAttr('style');
 }
