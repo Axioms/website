@@ -7,13 +7,17 @@
         <link href="res/images/branding/favicon.ico" rel="icon">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" media="screen" href="res/bootstrap/css/bootstrap.min.css" />
-        <link rel="stylesheet" type="text/css" media="screen" href="res/sidebar/sidebar.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="res/bootstrap-sidebar/bootstrap-sidebar.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="res/main/css/main.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="res/index/css/index.css" />
         <link rel="stylesheet" type="text/css" media="screen" href="res/font-awesome/css/all.css" />
         <script src="res/jquery/js/jquery-3.3.1.min.js"></script>
-        <script src="res/sidebar/sidebar.js"></script>
-        <script src="res/index/url-wrapper.js"></script>
+        <script src="res/bootstrap-sidebar/bootstrap-sidebar.js"></script>
+        <script src="res/main/js/main.js"></script>
+        <script src="res/index/js/index.js"></script>
+        <script src="res/index/js/url-wrapper.js"></script>
     </head>
-    <body onresize="smallWindowSetUp()" onhashchange="changePage()" onload="changePage()">
+    <body onresize="smallWindowSetUp()" onhashchange="">
         <div class="fluid-container">
             <div id="sb-main" class="sb-gradient-vertical sb-gradient-right">
                 <div class="sb-logo sb-gradient-bottom d-none d-md-block">
@@ -116,7 +120,7 @@
                 </div>
             </div>
             <div id="sb-page-content">
-                <iframe name="frame" id="page-content-wrapper" frameBorder="0" src="home/home.html">
+                <iframe name="frame" id="page-content-wrapper" frameBorder="0" src="test.html">
             </div>
         </div>
     </body>
