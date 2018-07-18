@@ -65,7 +65,7 @@ function clean() {
     $('div').removeAttr('style');
 }
 function fixIframe() {
-    $('iframe').removeAttr('style');
+    setIframeHeight("page-content-wrapper");
 }
 function getDocHeight(doc) {
     doc = doc || document;
