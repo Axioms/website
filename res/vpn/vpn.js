@@ -12,10 +12,4 @@ $(document).ready(function (){
             $(tempI).addClass("rotated");
         }
     });
-    $("#warning-button").click(function () {
-        $(this).parent().toggle("slow");
-    });
 });
-function leave() {
-    $("#warning-button-mobile").parent().toggle("slow");
-}
