@@ -57,3 +57,6 @@
     font-family: 'Ubuntu', sans-serif;
     line-height: 1rem;
 }
+.row-top-padding {
+    padding-top: 5%;
+}
