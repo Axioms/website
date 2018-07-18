@@ -28,23 +28,22 @@
     color: #007bff;
 }
 .d-text {
-    font-size: 1em;
     text-align: center;
 }
-.warning {
-    padding: 0px;
-    width: auto;
-    margin: auto;
-    text-align: center;
-    font-size: 1rem;
+@media screen and (min-width: 450px) {
+    .d-text {
+        font-size: 1em;
+    }
 }
-.warning p {
-    margin: 0px;
-    text-align: center;
+@media screen and (max-width: 450px) {
+    .d-text {
+        font-size: 0.8em;
+    }
 }
-.important-url {
-    color: inherit;
-    text-decoration-line: underline;
+@media screen and (max-width: 395px) {
+    .d-text {
+        font-size: 0.6em;
+    }
 }
 .display-5 {
     font-size: 2rem;
