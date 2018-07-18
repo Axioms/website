@@ -16,3 +16,6 @@ $(document).ready(function (){
         $(this).parent().toggle("slow");
     });
 });
+function leave() {
+    $("#warning-button-mobile").parent().toggle("slow");
+}
