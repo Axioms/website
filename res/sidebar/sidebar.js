@@ -3,7 +3,7 @@ $(document).ready(function(){
     smallWindowSetUp();
 })
 function smallWindowSetUp() {
-    clean();
+    fixIframe();
     if($(document).width() <= 768) {
         $(".sb-data").css({"height" : "0%"});
         $('div').removeAttr('style');
@@ -63,6 +63,9 @@ function flipArrow() {
 }
 function clean() {
     $('div').removeAttr('style');
+}
+function fixIframe() {
+    $('iframe').removeAttr('style');
 }
 function getDocHeight(doc) {
     doc = doc || document;
