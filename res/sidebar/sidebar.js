@@ -34,7 +34,7 @@ function largeWindowToggle() {
             $(".sb-link").css({height : ""});
             $('div').removeAttr('style');
         });
-        $("#sb-page-content").animate({"padding-left": "20%"}, 1000, function(){});
+        $("#sb-page-content").animate({"padding-left": "20%"}, 1000, function(){setIframeHeight(page-content-wrapper);});
         $(".sb-icon").animate({"font-size" : "1rem"}, 1000, function(){});
         $("#sb-main").animate({width: "20%"}, 1000, function(){});
         $("#win-toggle-a").prop("title", "Collapse");
@@ -43,7 +43,7 @@ function largeWindowToggle() {
     else {
         $(".sb-link").animate({width: "0px", height: "0px"}, 1000, function(){       
         });
-        $("#sb-page-content").animate({"padding-left": "10%"}, 1000, function(){});
+        $("#sb-page-content").animate({"padding-left": "10%"}, 1000, function(){setIframeHeight(page-content-wrapper);});
         
         $(".sb-icon").animate({"font-size" : "2rem"}, 1000, function(){});
         $("#sb-main").animate({width: "10%"}, 1000, function(){});
