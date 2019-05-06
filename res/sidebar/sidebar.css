@@ -1,0 +1,243 @@
+/*NavBar Sizes*/
+@media screen and (max-width: 768px){
+    :root {
+        --sidebar-size: 0%;
+        --pageData-size: 0%;
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 992px){
+    :root {
+        --sidebar-size: 20%;
+        --pageData-size: 100%;
+    }
+}   
+@media screen and (min-width: 992px) and (max-width: 1200px){
+    :root {
+        --sidebar-size: 20%;
+        --pageData-size: 100%;
+    }
+}   
+@media screen and (min-width: 1200px){
+    :root {
+        --sidebar-size: 20%;
+        --pageData-size: 100%;
+    }
+}
+/*NavBar Styles*/
+@media screen and (max-width: 768px){
+    /*Mobile*/
+    :root {
+        --sidebar-size: 0%;
+        --pageData-size: 0%;
+    }
+    .sb-main {
+        z-index: 10;
+    }
+    .sb-navbar {
+        width: 100%;
+        padding-bottom: 5%;
+        background-color: #f2f2f2;
+        border-bottom: 1px solid transparent;
+
+	    -moz-border-image: -moz-linear-gradient(right, rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%);
+	    -webkit-border-image: -webkit-linear-gradient(right, rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%);
+	    border-image: linear-gradient(to right, rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%);
+
+	    border-image-slice: 1;
+    }
+    .sb-navbar img {
+        margin-top: 4%;
+        margin-left: 4%;
+        height: 40px;
+        width: 40px;
+        display: inline-block;
+    }
+    .sb-navbar p{
+        display: inline;
+        text-align: center;
+        margin: 0px;
+    }
+    .sb-navbar i {
+        padding: 6%;
+        display: inline;
+        text-align: right;
+        float: right;
+        font-size: 1.5em;
+    }
+    .sb-logo img{
+        display: none;
+    }
+    .sb-links ul {
+        list-style-type: none;
+        padding: 0px;
+        margin: 0px;
+        text-align: center;
+    }
+    .sb-navbar-toggle-thing {
+        cursor: pointer;
+    }
+    .sb-link {
+        border-bottom: 1px solid transparent;
+
+	  -moz-border-image: -moz-linear-gradient(right, rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%);
+	  -webkit-border-image: -webkit-linear-gradient(right, rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%);
+	  border-image: linear-gradient(to right, rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%);
+
+	  border-image-slice: 1;
+    }
+    
+    .sb-link p {
+        text-align: center;
+        margin: 0%;
+        padding: 4% 0%;
+    }
+    .sb-data {
+        width: 100%;
+        overflow: hidden;
+        position: absolute;
+    }
+    .sb-active {
+        background-color: #f2f2f2;
+    }
+    #page-content-wrapper {
+        width: 100%;
+        height: 100%;
+        left: 0;
+        display: block;
+        position: absolute;
+        overflow: hidden;
+    }
+}
+@media screen and (min-width: 768px){
+    /*Desktop*/
+    #sb-main {
+        display: inline-block;
+        position: fixed;
+        width: var(--sidebar-size);
+        height: 100%;
+        z-index: 10;
+        overflow: hidden;
+    }
+    #sb-page-content {
+        display: inline-block;
+        position: absolute;
+        width: var(--pageData-size);
+        padding-left: var(--sidebar-size);
+        height: 100%;
+    }
+    .sb-logo {
+        width: 100%;
+        display: block;
+    }
+    .sb-logo img{
+        width: 100%;
+        padding: 10% 5%;
+    }
+    .sb-gradient-vertical {
+        -webkit-border-image: 
+            -webkit-linear-gradient(rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%) 1 100%;
+        -moz-border-image:
+            -moz-linear-gradient(rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%) 1 100%;    
+        -o-border-image:
+            -o-linear-gradient(rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%) 1 100%;
+        border-image:
+            linear-gradient(rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%) 1 100%;
+    }
+    .sb-gradient-horizontal {
+        -webkit-border-image: 
+            -webkit-linear-gradient(rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%) 1 100%;
+        -moz-border-image:
+            -moz-linear-gradient(rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%) 1 100%;    
+        -o-border-image:
+            -o-linear-gradient(rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%) 1 100%;
+        border-image:
+            linear-gradient(rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%) 1 100%;
+    }
+    .sb-gradient-left {
+        border-left-width: 1px;
+        border-left-style: solid;
+    }
+    .sb-gradient-right {
+        border-right-width: 1px;
+        border-right-style: solid;
+    }
+    .sb-gradient-bottom{
+        border-bottom: 1px solid transparent;
+	    -moz-border-image: -moz-linear-gradient(right, rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%);
+        -webkit-border-image: -webkit-linear-gradient(right, rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%);
+        border-image: linear-gradient(to right, rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%);
+        border-image-slice: 1;
+    }
+    .sb-gradient-top {
+        border-top: 1px solid transparent;
+	    -moz-border-image: -moz-linear-gradient(right, rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%);
+        -webkit-border-image: -webkit-linear-gradient(right, rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%);
+        border-image: linear-gradient(to right, rgba(0, 0, 0, 0) 4%, #c6c6c6 40%, rgba(0, 0, 0, 0) 96%);
+        border-image-slice: 1;
+    }
+    .sb-links {
+        width: 100%;
+        display: block;
+    }
+    .sb-links ul {
+        list-style-type: none;
+        padding: 0px;
+        margin: 0px;
+    }
+    .sb-item {
+        width: 100%;
+        height: 10%;
+        display: block;
+        left: 0px;
+        right: auto;
+        padding-top: 4%;
+    }
+    .sb-link {
+        width: 66%;
+        height: 100%;
+        text-align: center;
+        margin: 0px;
+        overflow: hidden;
+    }
+    .sb-link {
+        display: inline-block;
+    }
+    .sb-links ul li a {
+        text-decoration: none;
+        width: 66%;
+        height: 100%;
+        text-align: center;
+        
+        margin: 0px;
+    }
+    .sb-item .sb-link p {
+        vertical-align: middle;
+        margin: 0px;
+    }
+    .sb-icon {
+        display: inline-block;
+        height: 100%;
+        text-align: center;
+        margin: 0px;
+        padding: 4% 0%;
+    }
+    .sb-icon span  {
+        font-size: 1em;
+    }
+    .sb-active {
+        background-color: #f2f2f2;
+    }
+    #page-content-wrapper {
+        width: 100%;
+        height: 100%;
+        left: 0;
+        overflow: hidden;
+    }
+    .sb-move-side {
+        color: #007BFF;
+        display: inline;
+        position: absolute;
+        padding-top: 99%;
+        padding-left: 98%;
+    }
+}     

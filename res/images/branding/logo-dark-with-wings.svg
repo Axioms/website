@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="no"?>
+<!-- Generator: Gravit.io -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="isolation:isolate" viewBox="0 0 73 21.997" width="73" height="21.997">
+<defs>
+    <clipPath id="_clipPath_8MkRCp1sr2dRy1pQ3sDbrUb3NdYaLUwU"><rect width="73" height="21.997"/></clipPath>
+</defs>
+<g clip-path="url(#_clipPath_8MkRCp1sr2dRy1pQ3sDbrUb3NdYaLUwU)">
+    <g id="_Group_"><path d=" M 26.992 12.908 C 26.192 12.478 25.546 11.811 25.142 10.998 C 24.142 8.518 28.442 6.518 34.722 6.518 C 41.002 6.518 46.882 8.518 47.862 10.998 C 48.332 12.178 47.602 13.248 46.042 14.048" fill="none" vector-effect="none" stroke-width="1" stroke="rgb(48,60,66)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4"/>
+        <path d=" M 34.022 19.808 C 33.099 20.493 31.971 20.846 30.822 20.808 C 28.172 20.418 28.572 15.718 31.712 10.308 C 34.852 4.898 39.502 0.818 42.182 1.208 C 43.612 1.418 44.182 2.878 43.862 5.018" fill="none" vector-effect="none" stroke-width="1" stroke="rgb(48,60,66)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4"/>
+        <path d=" M 40.712 9.508 C 42.932 14.248 43.612 18.988 42.182 20.788 C 40.522 22.878 36.632 20.188 33.492 14.788 C 30.352 9.388 29.162 3.288 30.822 1.208 C 31.722 0.078 33.262 0.348 34.982 1.678" fill="none" vector-effect="none" stroke-width="1" stroke="rgb(48,60,66)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4"/>
+        <path d=" M 35.002 10.998 C 35.002 10.17 35.674 9.498 36.502 9.498 C 37.33 9.498 38.002 10.17 38.002 10.998 C 38.002 11.826 37.33 12.498 36.502 12.498 C 35.674 12.498 35.002 11.826 35.002 10.998 Z " fill="none" vector-effect="none" stroke-width="1" stroke="rgb(48,60,66)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4"/>
+    </g>
+    <path d=" M 52.5 7.998 L 72.5 7.998 L 52.5 7.998 Z  M 52.5 10.998 L 68.5 10.998 L 52.5 10.998 Z  M 52.5 13.998 L 62.5 13.998 L 52.5 13.998 Z " fill-rule="evenodd" fill="none" vector-effect="none" stroke-width="1" stroke="rgb(100,100,100)" stroke-linejoin="miter" stroke-linecap="square" stroke-miterlimit="3"/>
+    <path d=" M 0.5 7.998 L 20.5 7.998 L 0.5 7.998 Z  M 4.5 10.998 L 20.5 10.998 L 4.5 10.998 Z  M 10.5 13.998 L 20.5 13.998 L 10.5 13.998 Z " fill-rule="evenodd" fill="none" vector-effect="none" stroke-width="1" stroke="rgb(100,100,100)" stroke-linejoin="miter" stroke-linecap="square" stroke-miterlimit="3"/>
+    </g>
+    </svg>
