@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            @import url('https://fonts.googleapis.com/css?family=Ubuntu');
+        </style>
+        <link rel="stylesheet" type="text/css" media="screen" href="/res/bootstrap/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="/res/font-awesome/css/all.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="/res/gradient-border/gradient-border.css" />
+        <link rel="stylesheet" type="text/css" media="screen" href="/res/ssh/ssh.css" />
+        <script src="/res/jquery/js/jquery-3.3.1.min.js"></script>
+        <script src="/res/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/res/clipboard/clipboard.min.js"></script>
+        <script src="/res/ssh/ssh.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="card">
+                <div class="card-header shadow rounded-top">
+                    <h4 class="text-primary title d-inline-block">SSH Port Forwarding</h4>
+                    <span class="d-none d-inline-block title-icon text-primary">
+                        <i class="fas fa-angle-up"></i>
+                    </span>
+                </div>
+                <div class="card-body shadow bg-white rounded-bottom">
+                    <div class="">
+                        <div class="row">
+                            <div class="col-md-12 col-lg-6">    
+                                <form id="port-forwarding">
+                                    <div class="row">
+                                        <div class="col">
+                                            <select class="custom-select" onchange="setType(this.value)">
+                                                <option selected="" disabled selected>Type</option>
+                                                <option value="-L">Local</option>
+                                                <option value="-R">Remote</option>
+                                                <option value="-D">Dynamic</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <input type="text" class="form-control" placeholder="Optional Arguments" onkeyup="setModifiers(this.value)">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <input type="text" class="form-control" id="localAddress" placeholder="Local Address" onkeyup="setLocalAddress(this.value)">
+                                        </div>
+                                        <div class="col">
+                                            <input type="text" class="form-control" placeholder="Server SSH Login" onkeyup="setRemoteAddress(this.value)">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <input type="number" class="form-control" placeholder="Local Port" onkeyup="setLocalPort(this.value)">
+                                        </div>
+                                        <div class="col">
+                                            <input type="number" class="form-control" id="remotePort" placeholder="Server Port" onkeyup="setRemotePort(this.value)">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-group mb-3 col">
+                                            <div class="input-group-append rounded-left">
+                                                <button class="btn btn-info rounded-left" type="button" onclick="makeSSHForward()">Generate</button>
+                                            </div>
+                                            <input type="text" id="ssh-forward" class="form-control bg-light" value="" aria-label="" aria-describedby="basic-addon2" readonly>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-primary" type="button" data-clipboard-target="#ssh-forward">Copy <i class="far fa-clipboard"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-md-12 col-lg-6">
+                                <h3 class="display-4">Arguments</h3>
+                                <p class="list-item">Local - Specifies that the given port on the local (client) host is to be forwarded to the given host and port on the remote side.</p>
+                                <p class="list-item">Remote - Specifies that the given port on the remote (server) host is to be forwarded to the given host and port on the local side.</p>
+                                <p class="list-item">Dynamic - Specifies a local ''dynamic'' application-level port forwarding.</p>
+                                <p class="list-item">-f - Requests ssh to go to background just before command execution. </p>
+                                <p class="list-item">-N Do not execute a remote command. This is useful for just forwarding ports</p>
+                                <p class="list-item">More info <a target="_blank" href="https://linux.die.net/man/1/ssh">Here</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            new ClipboardJS('.btn');
+        </script>
+    </body>
+</html>
