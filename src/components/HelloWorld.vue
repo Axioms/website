@@ -1,4 +1,18 @@
 <template>
+  
+</template>
+
+<script>
+export default {
+  
+}
+</script>
+
+<style lang="scss" scoped>
+
+
+/*
+<template>
   <div class="hello">
     <h1>{{ msg }}</h1>
     <p>
@@ -56,4 +70,7 @@ li {
 a {
   color: #42b983;
 }
+</style>
+
+*/
 </style>
