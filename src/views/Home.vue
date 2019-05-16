@@ -15,7 +15,7 @@ export default {
 
 <style lang="scss" scoped>
 .home {
-  padding-top:8%;
+  padding-top: 8%;
 }
 .gb-border {
   border-bottom: 1px solid transparent;

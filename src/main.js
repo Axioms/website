@@ -7,8 +7,13 @@ import router from './router'
 import store from './store'
 import './registerServiceWorker'
 import BootstrapVue from 'bootstrap-vue'
+import VueClipboard from 'vue-clipboard2'
+
+VueClipboard.config.autoSetContainer = true
 Vue.config.productionTip = false
+
 Vue.use(BootstrapVue);
+Vue.use(VueClipboard);
 
 new Vue({
   router,
