@@ -41,21 +41,46 @@
 </script>
 
 <style lang="scss">
-@import 'plugins/custom.scss';
-#navbar-icon {
-  height: 35px;
-  width: auto;
-}
-@media only screen and (min-width: 768px) {
-  .nav-link  {
-    display: initial;
+  @import 'plugins/custom.scss';
+  #navbar-icon {
+    height: 35px;
+    width: auto;
   }
+  @media only screen and (min-width: 768px) {
+    .nav-link  {
+      display: initial;
+    }
+  }
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+  }
+  .ssh {
+    padding-top: 8%;
+  }
+  .card {
+		width: 100%;
+		padding-bottom: 5%;
+		border: none;
 }
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+  .card-header {
+    text-align: left;
+  }
+  .vpn {
+    padding-top: 4%;
+  }
+  .header-5 {
+    font-size: 2em;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  .d-icon {
+    font-size: 2em;
+    text-align: center;
+    padding-top: 1.0em;
+  }
 </style>
