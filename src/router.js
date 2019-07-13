@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
+import store from './store'
 
 Vue.use(Router)
 
@@ -24,7 +25,14 @@ export default new Router({
     {
       path: '/downloads',
       name: 'downloads',
-      component: () => import('./views/Download.vue')
+      component: () => import('./views/Download.vue'),
+      beforeEnter: (to, from, next) => {
+        if (store.getters.jwtUser) {
+          next();
+        } else {
+          next('/login');
+        }
+      }
     },
     {
       path: '/ssh',
@@ -36,5 +44,33 @@ export default new Router({
       name: 'about',
       component: () => import('./views/About.vue')
     },
+    {
+      path: '/signup',
+      name: 'signup',
+      component: () => import('./views/signup.vue'),
+      beforeEnter: (to, from, next) => {
+        if (store.getters.jwtUser) {
+          next('/');
+        } else {
+          next();
+        }
+      }
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('./views/login.vue'),
+      beforeEnter: (to, from, next) => {
+        if (store.getters.jwtUser) {
+          next('/');
+        } else {
+          next();
+        }
+      }
+    },
+    {
+      path: '*',
+      redirect: '/'
+    }
   ]
 })
