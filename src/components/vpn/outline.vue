@@ -68,7 +68,7 @@
           
                             <form>
                                 <div class="input-group mb-3">
-                                    <input type="text" id="outline-server-auth" class="form-control bg-light" v-bind:value="message" aria-label="VPN access key" aria-describedby="basic-addon2">
+                                    <input type="text" id="outline-server-auth" class="form-control bg-light" v-bind:value="message" aria-label="VPN access key" aria-describedby="basic-addon2" readonly>
                                     <div class="input-group-append">
                                         <button class="btn btn-outline-primary" id="popunder" v-b-popover.bottom="displayPop" type="button" @click="doCopy">Copy <font-awesome-icon :icon="['far','clipboard']" /></button>
                                     </div>
@@ -86,7 +86,7 @@
 export default {
 data () {
     return {
-      message: 'ss://YWVzLTI1Ni1jZmI6M0QyQTYwOUNGOTI3N0NCMzlGMTdCNUYxQjkyMUVGRTFGM0ZBNDU2REBheGlvbXMuZGRucy5uZXQ6NTAwMA#AxiomProxy',
+      message: 'ss://YWVzLTI1Ni1jZmI6NzNEQTE5Rjc4NDIxQUNENjAzQzcwMTIxQzI0RTAxRjcwNDY4RjA3MEBheGlvbXMuZGRucy5uZXQ6NTAwMA#Axiom-Proxy',
       popoverMessage: null
      };
   },
@@ -109,7 +109,7 @@ data () {
         return {
           html: true,
           content: () => {
-            return '<p style="color:#0da346; font-size:1.3em">Success!</p>'
+            return '<p style="color:#0da346; font-size:1.3em; margin: 0px">Success!</p>'
           }
         }
       }
@@ -117,7 +117,7 @@ data () {
         return {
           html: true,
           content: () => {
-            return '<p style="color:#8c0808; font-size:1.3em">Failed!</p>'
+            return '<p style="color:#8c0808; font-size:1.3em; margin: 0px">Failed!</p>'
           }
         }
       }

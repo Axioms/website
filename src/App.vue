@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div>
-      <b-navbar toggleable="md" type="dark" variant="dark">
+      <b-navbar toggleable="md" type="dark" variant="dark" class="navbar navbar-dark bg-dark">
         <b-navbar-brand>
           <router-link to="/">
             <img id="navbar-icon" src="@/assets/logo-white.svg" alt="axiom-logo">
@@ -17,9 +17,20 @@
             <b-nav-item to="/vpn"> VPN </b-nav-item>
             <b-nav-item to="/downloads"> Downloads </b-nav-item>
             <b-nav-item to="/ssh"> SSH Tools </b-nav-item>
-            <b-nav-item to="/"> Home </b-nav-item>
-            <b-nav-item to="about"> About </b-nav-item>
+            <b-nav-item to="about" disabled> About </b-nav-item>
+          </b-navbar-nav>
+            <b-navbar-nav class="ml-auto rightnavPad" v-if="this.$store.state.JWT != ''">
+              <b-nav-item-dropdown right>
+                <!-- Using 'button-content' slot -->
+                <template slot="button-content"><em>{{getCurrentUser}}</em></template>
+                <b-dropdown-item disabled href="#">Profile</b-dropdown-item>
+                <b-dropdown-item v-on:click="signout" href="#">Sign Out</b-dropdown-item>
+            </b-nav-item-dropdown>
+          </b-navbar-nav>
 
+          <b-navbar-nav class="ml-auto rightnavPad" v-else>
+              <b-nav-item to="login" class="block"> Login </b-nav-item>
+              <b-nav-item to="signup" class="bluePill"> Sign up </b-nav-item>
           </b-navbar-nav>
         </b-collapse>
       </b-navbar>
@@ -36,12 +47,38 @@
       };
     },
     methods: {
+      async signout() {
+        this.$axios.defaults.headers.common['Authorization'] = 'Bearer' + ' ' + this.$store.getters.jwt;
+        this.$axios.post(process.env.VUE_APP_API_ADD + '/auth/signout.php', {})
+        .then(() => {
+          this.$store.commit('setJWT', "");
+          this.$router.push("/?loggedout=true");
+        })
+        .catch((error) => {
+          console.log(error);
+          this.$store.commit('setJWT', "");
+          this.$router.push("/?loggedout=true");
+        });
+      }
+    },
+    computed: {
+      getCurrentUser() {
+        return this.$store.getters.jwtUser
+      }
+    },
+    created() {
+        window.addEventListener('beforeunload', (e) => {
+          //this.$store.commit('setJWT', "");
+        }, false)
     }
   }
 </script>
 
 <style lang="scss">
   @import 'plugins/custom.scss';
+  @import 'plugins/cards.scss';
+  @import 'plugins/viewPad.scss';
+
   #navbar-icon {
     height: 35px;
     width: auto;
@@ -50,6 +87,22 @@
     .nav-link  {
       display: initial;
     }
+    .rightnavPad {
+    margin-right: 2%;
+    }
+    .block  a{
+      display: block;
+      padding-right: 1.5rem !important;
+    }
+  }
+  .router-link-exact-active {
+    color: #FFF !important;
+  }
+  .bluePill {
+    background-color: #007bff;
+    color: #6c757d !important;
+    border-radius: .25em;
+    padding: .5rem .3rem;
   }
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -57,30 +110,5 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-  }
-  .ssh {
-    padding-top: 8%;
-  }
-  .card {
-		width: 100%;
-		padding-bottom: 5%;
-		border: none;
-}
-  .card-header {
-    text-align: left;
-  }
-  .vpn {
-    padding-top: 4%;
-  }
-  .header-5 {
-    font-size: 2em;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-    line-height: 1.2;
-  }
-  .d-icon {
-    font-size: 2em;
-    text-align: center;
-    padding-top: 1.0em;
   }
 </style>

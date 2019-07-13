@@ -7,8 +7,13 @@ import { faWindows } from '@fortawesome/free-brands-svg-icons'
 import { faChrome } from '@fortawesome/free-brands-svg-icons'
 import { faClipboard } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
+import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faArrowDown } from '@fortawesome/free-solid-svg-icons'
+import { faLink } from '@fortawesome/free-solid-svg-icons'
+import { faTrashAlt } from '@fortawesome/free-regular-svg-icons'
 
-
-library.add(faAndroid, faApple, faWindows, faChrome, faClipboard)
+library.add(faAndroid, faApple, faWindows, faChrome, faClipboard, faExclamationTriangle, faExclamationCircle, faTimes, faArrowDown, faLink, faTrashAlt)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
