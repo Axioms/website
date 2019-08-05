@@ -11,7 +11,6 @@
             </b-nav>
           </div>
         </div>
-
         <div class="card-body shadow bg-white rounded-bottom">
           <div class="col-12">
             <div v-if="currentPage == 0">
@@ -19,9 +18,6 @@
             </div>
             <div v-else-if="currentPage == 1">
               <ViewDownloads></ViewDownloads>
-            </div>
-            <div v-else-if="currentPage == 2">
-
             </div>
           </div>
         </div>
@@ -31,7 +27,7 @@
 </template>
 
 <script>
-  import ViewDownloads from '@/components/downloads/ViewDownloads.vue'
+  import ViewDownloads from '@/components/downloads/ViewDownloads/ViewDownloads.vue'
   import UploadFiles from '@/components/downloads/upload.vue'
 
   export default {

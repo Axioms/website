@@ -13,7 +13,8 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons'
 import { faLink } from '@fortawesome/free-solid-svg-icons'
 import { faTrashAlt } from '@fortawesome/free-regular-svg-icons'
+import { faLock } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faAndroid, faApple, faWindows, faChrome, faClipboard, faExclamationTriangle, faExclamationCircle, faTimes, faArrowDown, faLink, faTrashAlt)
+library.add(faAndroid, faApple, faWindows, faChrome, faClipboard, faExclamationTriangle, faExclamationCircle, faTimes, faArrowDown, faLink, faTrashAlt, faLock)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)

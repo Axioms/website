@@ -66,8 +66,10 @@ export default {
                 }
             })
             .catch((error) => {
-                console.log(error);
                 this.apiErr = error.response.data.message;
+                if(this.apiErr == undefined) {
+                    this.apiErr = "Could not communicate with the server.";
+                }
                 this.showAlert();
             });
         },

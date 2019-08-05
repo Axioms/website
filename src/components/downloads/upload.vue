@@ -12,6 +12,14 @@
             <div v-if="showPorgress">
                 <b-progress class="mt-4 mb-4" :value="uploadPercentage" :max="100" show-progress animated></b-progress>
             </div>
+            <div v-if="uploadPercentage == 100" class="text-center">
+                <div>
+                    <b-spinner variant="primary" label="Loading..."></b-spinner>
+                </div>
+                <div>
+                    <p> Processing file(s)... </p>
+                </div>
+            </div>
         </b-form>
         <b-row>
         <b-col class="alert">
@@ -38,6 +46,7 @@ export default {
     },
     methods: {
         async submitFile(){
+            this.hasFailed = null;
             let formData = new FormData();
 
             for( var i = 0; i < this.files.length; i++ ){
@@ -57,14 +66,37 @@ export default {
                 this.hasFailed = false;
                 this.showPorgress = false;
                 this.uploadPercentage = 0;
+                this.$bvToast.toast("The file(s) were successfully uploaded!", {
+				title: "Success!",
+				autoHideDelay: 2000,
+				variant: "success",
+				solid: false,
+				appendToast: false
+			});
             })
             .catch((error) => {
                 this.hasFailed = true;
                 this.showPorgress = false;
                 this.uploadPercentage = 0;
-                if(error.response.data.message == "Invalid Response") {
+                if(error.response.data.message == "Invalid Token") {
+                    this.$root.$bvToast.toast("User has been logged out", {
+						title: "Error!",
+						autoHideDelay: 5000,
+						variant: "danger",
+						solid: false,
+						appendToast: false
+					});
                     this.$store.commit('setJWT', "");
                     this.$router.push("/?loggedout=true");
+                }
+                else {
+                    this.$root.$bvToast.toast("An unknown error occurred", {
+						title: "Error!",
+						autoHideDelay: 5000,
+						variant: "danger",
+						solid: false,
+						appendToast: false
+					});
                 }
             });
         }
