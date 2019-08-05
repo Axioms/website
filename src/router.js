@@ -45,6 +45,11 @@ export default new Router({
       component: () => import('./views/About.vue')
     },
     {
+      path: '/gradeCalc',
+      name: 'gradeCalc',
+      component: () => import('./views/GradeCalc.vue')
+    },
+    {
       path: '/signup',
       name: 'signup',
       component: () => import('./views/signup.vue'),

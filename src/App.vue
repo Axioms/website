@@ -17,6 +17,7 @@
             <b-nav-item to="/vpn"> VPN </b-nav-item>
             <b-nav-item to="/downloads"> Downloads </b-nav-item>
             <b-nav-item to="/ssh"> SSH Tools </b-nav-item>
+            <b-nav-item to="/gradeCalc" disabled> Grade Calculator </b-nav-item>
             <b-nav-item to="about" disabled> About </b-nav-item>
           </b-navbar-nav>
             <b-navbar-nav class="ml-auto rightnavPad" v-if="this.$store.state.JWT != ''">
@@ -54,8 +55,7 @@
           this.$store.commit('setJWT', "");
           this.$router.push("/?loggedout=true");
         })
-        .catch((error) => {
-          console.log(error);
+        .catch(() => {
           this.$store.commit('setJWT', "");
           this.$router.push("/?loggedout=true");
         });
@@ -67,7 +67,7 @@
       }
     },
     created() {
-        window.addEventListener('beforeunload', (e) => {
+        window.addEventListener('beforeunload', () => {
           //this.$store.commit('setJWT', "");
         }, false)
     }

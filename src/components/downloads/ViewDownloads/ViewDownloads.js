@@ -78,13 +78,11 @@ export default {
 				const url = window.URL.createObjectURL(new Blob([response.data]));
 				const link = document.createElement('a');
 				link.href = url;
-				console.log(fileName + fileType);
 				link.setAttribute('download', fileName + fileType); //or any other extension
 				document.body.appendChild(link);
 				link.click();
 				this.makeToast("Success!", "File successfully download!", 2, "success");
 			}).catch((error) => {
-				console.log(error);
 				if (error.response.data.message == "Invalid Response") {
 					this.signoutNotification();
 					this.$store.commit('setJWT', "");
@@ -108,7 +106,6 @@ export default {
 					this.makeToast("Success!", "The file was successfully deleted!", 4, "success");
 				})
 				.catch((error) => {
-					console.log(error);
 					if (error.response.data.message == "Invalid Response") {
 						this.signoutNotification();
 						this.$store.commit('setJWT', "");
