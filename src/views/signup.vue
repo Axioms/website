@@ -6,7 +6,7 @@
                 <b-row>
                     <b-col cols="3"></b-col>
                     <b-col>
-                        <b-form @submit.prevent="register">
+                        <b-form v-on:submit.prevent="register">
                             <b-form-group>
                                 <b-form-input id="input-1" v-model="signup.email" type="email" required placeholder="Email"></b-form-input>
                             </b-form-group>
@@ -63,11 +63,7 @@ export default {
     },
     methods: {
            async register() {
-                if(this.signup.password == this.signup.passwordVar) {console.log({
-                        'email' : this.signup.email,
-                        'username' : this.signup.username,
-                        'password' : this.signup.password
-                    });
+                if(this.signup.password == this.signup.passwordVar) {
                     this.$axios.post(process.env.VUE_APP_API_ADD + '/auth/register.php', {
                         'email' : this.signup.email,
                         'username' : this.signup.username,
@@ -79,6 +75,9 @@ export default {
                     })
                     .catch((error) => {
                         this.apiErr = error.response.data.message;
+                        if(this.apiErr == undefined) {
+                            this.apiErr = "Could not communicate with the server.";
+                        }
                         this.showAlert();
                     });
                 } else {

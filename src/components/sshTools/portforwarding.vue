@@ -26,7 +26,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <input type="text" class="form-control" id="localAddress" placeholder="Local Address" v-model="localAdd">
+                                        <input type="text" v-if="this.portType == '-D'" class="form-control" id="localAddress" placeholder="Local Address" v-model="localAdd" readonly>
+                                        <input type="text" v-else class="form-control" id="localAddress" placeholder="Local Address" v-model="localAdd">
                                     </div>
                                     <div class="col">
                                         <input type="text" class="form-control" placeholder="Server SSH Login" v-model="remoteAdd">
@@ -37,13 +38,13 @@
                                         <input type="number" class="form-control" placeholder="Local Port" v-model="localPort">
                                     </div>
                                     <div class="col">
-                                        <input v-if="this.portType == '-D'" type="number" class="form-control" id="remotePort" placeholder="Server Port" v-model="remotePort" readonly="">
+                                        <input v-if="this.portType == '-D'" type="number" class="form-control" id="remotePort" placeholder="Server Port" v-model="remotePort" readonly>
                                         <input v-else type="number" class="form-control" id="remotePort" placeholder="Server Port" v-model="remotePort">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="input-group mb-3 col">
-                                        <input type="text" id="ssh-forward" class="form-control bg-light rounded-left" @click="makeCommand" aria-label="" v-model="command" aria-describedby="basic-addon2" readonly>
+                                        <input type="text" id="ssh-forward" class="form-control bg-light rounded-left" aria-label="" v-model="makeCommand" aria-describedby="basic-addon2" readonly>
                                         <div class="input-group-append">
                                             <button class="btn btn-outline-primary" id="popunder" v-b-popover.bottom="displayPop" type="button" data-clipboard-target="#ssh-forward"  @click="doCopy">Copy <font-awesome-icon :icon="['far','clipboard']" /></button>
                                         </div>
@@ -78,13 +79,12 @@ export default {
             remoteAdd: '',
             localPort: '',
             remotePort: '',
-            command: '',
             popoverMessage: null
         }
     },
     methods: {
     doCopy() {
-      this.$copyText(this.command).then(() => {
+      this.$copyText(this.makeCommand).then(() => {
         this.popoverMessage = true;
       },() => {
         this.popoverMessage = false;
@@ -124,14 +124,9 @@ export default {
                 return "ssh" + " " + this.portType + " " + this.args + " " + this.localPort + ":" + this.localAdd + ":" + this.remotePort + " " + this.remoteAdd;
              }
              else {
-                return {
-                    html: true,
-                    content: () => {
-                        return '<p style="color:#8c0808; font-size:1.3em; margin: 0px">Failed!</p>'
-                    }
-                }
-             }
-         }
+                return "";
+            }
+        }
   }
 }
 </script>
