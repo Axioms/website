@@ -7,15 +7,15 @@
                     <b-col cols="3"></b-col>
                     <b-col>
                         <b-form @submit.prevent="login()">
-                            <b-form-group>
-                                <b-form-input id="input-1" v-model="loginData.email" type="email" required placeholder="Email"></b-form-input>
+                            <b-form-group class="form" :state="$v.loginData.email.$dirty ? !$v.loginData.email.$error : null" invalid-feedback="A valid email address is required">
+                                <b-form-input id="input-1" :state="$v.loginData.email.$dirty ? !$v.loginData.email.$error : null" v-model="$v.loginData.email.$model" type="email" required placeholder="Email"></b-form-input>
                             </b-form-group>
 
-                            <b-form-group>
-                                <b-form-input id="input 2" v-model="loginData.password" type="password" required placeholder="Password"></b-form-input>
+                            <b-form-group class="form" :state="$v.loginData.password.$dirty ? !$v.loginData.password.$error : null" invalid-feedback="A valid password is required">
+                                <b-form-input id="input-2" :state="$v.loginData.password.$dirty ? !$v.loginData.password.$error : null" v-model="$v.loginData.password.$model" type="password" required placeholder="Password"></b-form-input>
                             </b-form-group>
 
-                            <b-button type="submit" variant="outline-primary">Submit</b-button>
+                            <b-button type="submit" :disabled="$v.loginData.$invalid" variant="outline-primary">Submit</b-button>
                         </b-form>
                     </b-col>
                     <b-col cols="3"></b-col>
@@ -39,48 +39,64 @@
 </template>
 
 <script>
-export default {
-    data() {
-        return {
-            loginData: {
-                email: '',
-                password: ''
+    import { validationMixin } from 'vuelidate';
+    import { required, minLength, email, maxLength } from 'vuelidate/lib/validators';
+    export default {
+        mixins: [validationMixin],
+        data() {
+            return {
+                loginData: {
+                    email: '',
+                    password: ''
+                },
+                apiErr: null,
+                dismissSecs: 10,
+                dismissCountDown: 0
+            }
+        },
+        validations: {
+                loginData: {
+                    email: {
+                        required,
+                        email
+                    },
+                    password: {
+                        required,
+                        minLength: minLength(8),
+                        maxLength: maxLength(27)
+                    }
+                }
             },
-            apiErr: null,
-            dismissSecs: 10,
-            dismissCountDown: 0
-        }
-    },
-    methods: {
-        async login() {
-            this.$axios.post(process.env.VUE_APP_API_ADD + '/auth/login.php', {
-                'email' : this.loginData.email,
-                'password' : this.loginData.password
-            })
-            .then((response) => {
-                this.$store.commit('setJWT', response.data.token);
-                if(this.$store.getters.jwtUser) {
-                    this.$router.push({ name: 'home', query: { redirect: '/' } });
-                } else {
-                    this.$store.commit('setJWT', "");
-                }
-            })
-            .catch((error) => {
-                this.apiErr = error.response.data.message;
-                if(this.apiErr == undefined) {
-                    this.apiErr = "Could not communicate with the server.";
-                }
-                this.showAlert();
-            });
-        },
-        countDownChanged(dismissCountDown) {
-            this.dismissCountDown = dismissCountDown;
-        },
-        showAlert() {
-            this.dismissCountDown = this.dismissSecs;
+        methods: {
+            async login() {
+                this.$axios.post(process.env.VUE_APP_API_ADD + '/auth/login.php', {
+                    'email' : this.loginData.email,
+                    'password' : this.loginData.password
+                })
+                .then((response) => {
+                    this.$store.commit('setJWT', response.data.token);
+                    if(this.$store.getters.jwtUser) {
+                        this.$router.push({ name: 'home', query: { redirect: '/' } });
+                    } else {
+                        this.$store.commit('setJWT', "");
+                    }
+                })
+                .catch((error) => {
+                    this.apiErr = error.response.data.message;
+                    if(this.apiErr == undefined) {
+                        this.apiErr = "Could not communicate with the server.";
+                    }
+                    this.showAlert();
+                });
+            },
+            countDownChanged(dismissCountDown) {
+                this.dismissCountDown = dismissCountDown;
+            },
+            showAlert() {
+                this.dismissCountDown = this.dismissSecs;
+            }
         }
     }
-}
 </script>
 
 <style lang="scss" scoped>
@@ -109,5 +125,8 @@ export default {
     }
     .alert {
         margin: 1rem 0rem;
+    }
+    .form {
+        text-align: left;
     }
 </style>

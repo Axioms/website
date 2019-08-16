@@ -210,6 +210,7 @@ export default {
 			this.toastCount++
 			this.$bvToast.toast(data, {
 				title: header,
+				toaster: 'b-toaster-top-left',
 				autoHideDelay: deration * 1000,
 				variant: variant,
 				solid: false,
@@ -219,6 +220,7 @@ export default {
 		signoutNotification() {
 			this.$root.$bvToast.toast("User has been logged out", {
 				title: "Error!",
+				toaster: 'b-toaster-top-left',
 				autoHideDelay: 5000,
 				variant: "danger",
 				solid: false,
@@ -235,6 +237,7 @@ export default {
 				this.totalRows = this.items.length;
 				this.$bvToast.toast("connected to the server!", {
 					title: "connected!",
+					toaster: 'b-toaster-top-left',
 					autoHideDelay: 1000,
 					variant: "success",
 					solid: false,
@@ -245,6 +248,7 @@ export default {
 				if (error.response.data.message == "Invalid Token") {
 					this.$root.$bvToast.toast("User has been logged out", {
 						title: "Error!",
+						toaster: 'b-toaster-top-left',
 						autoHideDelay: 5000,
 						variant: "danger",
 						solid: false,
@@ -256,6 +260,7 @@ export default {
 				else {
 					this.$bvToast.toast("Error communicating with the server", {
 						title: "Error!",
+						toaster: 'b-toaster-top-left',
 						autoHideDelay: 5000,
 						variant: "danger",
 						solid: false,

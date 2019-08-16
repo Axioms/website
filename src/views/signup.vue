@@ -6,24 +6,24 @@
                 <b-row>
                     <b-col cols="3"></b-col>
                     <b-col>
-                        <b-form v-on:submit.prevent="register">
-                            <b-form-group>
-                                <b-form-input id="input-1" v-model="signup.email" type="email" required placeholder="Email"></b-form-input>
+                        <b-form v-on:submit.stop.prevent="register">
+                            <b-form-group class="form" :state="$v.signup.email.$dirty ? !$v.signup.email.$error : null" invalid-feedback="A valid email address is required">
+                                <b-form-input id="input-1" :state="$v.signup.email.$dirty ? !$v.signup.email.$error : null" v-model="$v.signup.email.$model" type="email" required placeholder="Email"></b-form-input>
                             </b-form-group>
 
-                            <b-form-group>
-                                <b-form-input id="input-2" v-model="signup.username" type="text" required placeholder="Username"></b-form-input>
+                            <b-form-group class="form" :state="$v.signup.username.$dirty ? !$v.signup.username.$error : null" invalid-feedback="Username must be atleast 4 characters long">
+                                <b-form-input id="input-2" :state="$v.signup.username.$dirty ? !$v.signup.username.$error : null" v-model="$v.signup.username.$model" type="text" required placeholder="Username"></b-form-input>
                             </b-form-group>
 
-                            <b-form-group>
-                                <b-form-input id="input 3" v-model="signup.password" type="password" required placeholder="Password"></b-form-input>
+                            <b-form-group class="form" :state="$v.signup.password.$dirty ? !$v.signup.password.$error : null" invalid-feedback="Password must be atleast 8 characters long">
+                                <b-form-input id="input 3" :state="$v.signup.password.$dirty ? !$v.signup.password.$error : null" v-model="$v.signup.password.$model" type="password" required placeholder="Password"></b-form-input>
                             </b-form-group>
 
-                            <b-form-group>
-                                <b-form-input id="input 4" v-model="signup.passwordVar" type="password" required placeholder="Password Again"></b-form-input>
+                            <b-form-group class="form" :state="$v.signup.passwordVar.$dirty ? !$v.signup.passwordVar.$error : null" invalid-feedback="Does not match the password">
+                                <b-form-input id="input 4" :state="$v.signup.passwordVar.$dirty ? !$v.signup.passwordVar.$error : null" v-model="$v.signup.passwordVar.$model" type="password" required placeholder="Password Again"></b-form-input>
                             </b-form-group>
 
-                            <b-button type="submit" variant="outline-primary">Submit</b-button>
+                            <b-button type="submit" :disabled="$v.signup.$invalid" id="btn-sub" variant="outline-primary">Submit</b-button>
                         </b-form>
                     </b-col>
                     <b-col cols="3"></b-col>
@@ -47,56 +47,81 @@
 </template>
 
 <script>
-export default {
-    data() {
-        return {
+    import { validationMixin } from 'vuelidate';
+    import { required, minLength, sameAs, email, maxLength } from 'vuelidate/lib/validators';
+    export default {
+        mixins: [validationMixin],
+        data() {
+            return {
+                signup: {
+                    email: '',
+                    username: '',
+                    password: '',
+                    passwordVar: ''
+                },  
+                apiErr: null,
+                dismissSecs: 10,
+                dismissCountDown: 0
+            };
+        },
+        validations: {
             signup: {
-                email: '',
-                username: '',
-                password: '',
-                passwordVar: ''
-            },  
-            apiErr: null,
-            dismissSecs: 10,
-            dismissCountDown: 0
-        };
-    },
-    methods: {
-           async register() {
-                if(this.signup.password == this.signup.passwordVar) {
-                    this.$axios.post(process.env.VUE_APP_API_ADD + '/auth/register.php', {
-                        'email' : this.signup.email,
-                        'username' : this.signup.username,
-                        'password' : this.signup.password
-                    })
-                    .then((response) => {
-                        this.$store.commit('setJWT', response.data.token);
-                        this.$router.push({ name: 'home', query: { redirect: '/' } });
-                    })
-                    .catch((error) => {
-                        this.apiErr = error.response.data.message;
-                        if(this.apiErr == undefined) {
-                            this.apiErr = "Could not communicate with the server.";
-                        }
-                        this.showAlert();
-                    });
-                } else {
-                    this.apiErr = "The passwords do not match";
-                    this.showAlert();
+                email: {
+                    required,
+                    email
+                },
+                username: {
+                    required,
+                    minLength: minLength(4),
+                    maxLength: maxLength(250)
+                },
+                password: {
+                    required,
+                    minLength: minLength(8),
+                    maxLength: maxLength(27)
+                },
+                passwordVar: {
+                    required,
+                    sameAsPassword: sameAs('password')
                 }
-            },
-            countDownChanged(dismissCountDown) {
-                this.dismissCountDown = dismissCountDown
-            },
-            showAlert() {
-                this.dismissCountDown = this.dismissSecs
             }
-        }
-}
+        },
+        methods: {
+            async register() {
+                    if(this.signup.password == this.signup.passwordVar) {
+                        this.$axios.post(process.env.VUE_APP_API_ADD + '/auth/register.php', {
+                            'email' : this.signup.email,
+                            'username' : this.signup.username,
+                            'password' : this.signup.password
+                        })
+                        .then((response) => {
+                            this.$store.commit('setJWT', response.data.token);
+                            this.$router.push({ name: 'home', query: { redirect: '/' } });
+                        })
+                        .catch((error) => {
+                            this.apiErr = error.response.data.message;
+                            if(this.apiErr == undefined) {
+                                this.apiErr = "Could not communicate with the server.";
+                            }
+                            this.showAlert();
+                        });
+                    } else {
+                        this.apiErr = "The passwords do not match";
+                        this.showAlert();
+                    }
+                },
+                countDownChanged(dismissCountDown) {
+                    this.dismissCountDown = dismissCountDown
+                },
+                showAlert() {
+                    this.dismissCountDown = this.dismissSecs
+                }
+            }
+    }
 </script>
 
 <style lang="scss" scoped>
-@media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 768px) {
         .container {
             padding: 0px !important;
         }
@@ -121,5 +146,8 @@ export default {
     }
     .alert {
         margin: 1rem 0rem;
+    }
+    .form {
+        text-align: left;
     }
 </style>
