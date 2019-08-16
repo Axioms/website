@@ -67,7 +67,8 @@ export default {
                 this.showPorgress = false;
                 this.uploadPercentage = 0;
                 this.$bvToast.toast("The file(s) were successfully uploaded!", {
-				title: "Success!",
+                title: "Success!",
+                toaster: 'b-toaster-top-left',
 				autoHideDelay: 2000,
 				variant: "success",
 				solid: false,
@@ -80,7 +81,8 @@ export default {
                 this.uploadPercentage = 0;
                 if(error.response.data.message == "Invalid Token") {
                     this.$root.$bvToast.toast("User has been logged out", {
-						title: "Error!",
+                        title: "Error!",
+                        toaster: 'b-toaster-top-left',
 						autoHideDelay: 5000,
 						variant: "danger",
 						solid: false,
@@ -91,7 +93,8 @@ export default {
                 }
                 else {
                     this.$root.$bvToast.toast("An unknown error occurred", {
-						title: "Error!",
+                        title: "Error!",
+                        toaster: 'b-toaster-top-left',
 						autoHideDelay: 5000,
 						variant: "danger",
 						solid: false,

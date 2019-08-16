@@ -48,11 +48,16 @@ export default new Router({
       path: '/gradeCalc',
       name: 'gradeCalc',
       component: () => import('./views/GradeCalc.vue')
+    }, 
+    {
+      path: '/notepad',
+      name: 'notepad',
+      component: () => import('./views/Notepad.vue')
     },
     {
       path: '/signup',
       name: 'signup',
-      component: () => import('./views/signup.vue'),
+      component: () => import('./views/Signup.vue'),
       beforeEnter: (to, from, next) => {
         if (store.getters.jwtUser) {
           next('/');
