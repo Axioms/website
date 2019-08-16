@@ -7,7 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import { 
 	faExclamationTriangle, faExclamationCircle, faTimes, faArrowDown, faLink, 
-	faLock, faCog, faPlusCircle, faSignOutAlt, faSignInAlt, faUserPlus, faUser, faGreaterThanEqual, faLessThan
+	faLock, faCog, faPlusCircle, faSignOutAlt, faSignInAlt, faUserPlus, faUser,
+	faGreaterThanEqual, faLessThan, faMinus, faPlus
 } from '@fortawesome/free-solid-svg-icons'
 
 
@@ -15,6 +16,6 @@ import {
 library.add(
 	faAndroid, faApple, faWindows, faChrome, faClipboard, faExclamationTriangle, faExclamationCircle, faTimes, 
 	faArrowDown, faLink, faTrashAlt, faLock, faCog, faPlusCircle, faEdit, faSignInAlt, faSignOutAlt, faUserPlus, 
-	faUser, faGreaterThanEqual, faLessThan)
+	faUser, faGreaterThanEqual, faLessThan, faMinus, faPlus)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
