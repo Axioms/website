@@ -67,12 +67,12 @@ export default {
                 this.showPorgress = false;
                 this.uploadPercentage = 0;
                 this.$bvToast.toast("The file(s) were successfully uploaded!", {
-                title: "Success!",
-                toaster: 'b-toaster-top-left',
-				autoHideDelay: 2000,
-				variant: "success",
-				solid: false,
-				appendToast: false
+                    title: "Success!",
+                    toaster: 'b-toaster-top-left',
+                    autoHideDelay: 2000,
+                    variant: "success",
+                    solid: false,
+                    appendToast: false
 			});
             })
             .catch((error) => {
