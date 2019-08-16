@@ -5,7 +5,7 @@
 			<div v-if="this.$store.state.JWT == ''">
 				<b-row>
 					<b-col class="alert">
-						<b-alert show variant="danger" dismissible fade> You need to be signed in to save notes </b-alert>
+						<b-alert :show="$store.state.showNotSignedInErrors.notepad" @dismissed="$store.state.showNotSignedInErrors.notepad = false" variant="danger" dismissible fade> You need to be signed in to save notes </b-alert>
 					</b-col>
 				</b-row>
 			</div>

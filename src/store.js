@@ -6,7 +6,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    JWT: ''
+    JWT: '',
+    showNotSignedInErrors: {
+      notepad: true,
+      gradebook: true
+    }
   },
   plugins: [createPersistedState()],
   mutations: {
