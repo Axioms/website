@@ -17,21 +17,22 @@
             <b-nav-item to="/vpn"> VPN </b-nav-item>
             <b-nav-item to="/downloads"> Downloads </b-nav-item>
             <b-nav-item to="/ssh"> SSH Tools </b-nav-item>
-            <b-nav-item to="/gradeCalc" disabled> Grade Calculator </b-nav-item>
+            <b-nav-item to="/gradeCalc"> Grade Calculator </b-nav-item>
+            <b-nav-item to="/notepad"> notepad </b-nav-item>
             <b-nav-item to="about" disabled> About </b-nav-item>
           </b-navbar-nav>
             <b-navbar-nav class="ml-auto rightnavPad" v-if="this.$store.state.JWT != ''">
               <b-nav-item-dropdown right>
                 <!-- Using 'button-content' slot -->
                 <template slot="button-content"><em>{{getCurrentUser}}</em></template>
-                <b-dropdown-item disabled href="#">Profile</b-dropdown-item>
-                <b-dropdown-item v-on:click="signout" href="#">Sign Out</b-dropdown-item>
+                <b-dropdown-item disabled href="#">Profile <span><font-awesome-icon :icon="['fas','user']" /></span></b-dropdown-item>
+                <b-dropdown-item v-on:click="signout" href="#">Sign Out <span><font-awesome-icon :icon="['fas','sign-out-alt']" /></span></b-dropdown-item>
             </b-nav-item-dropdown>
           </b-navbar-nav>
 
           <b-navbar-nav class="ml-auto rightnavPad" v-else>
-              <b-nav-item to="login" class="block"> Login </b-nav-item>
-              <b-nav-item to="signup" class="bluePill"> Sign up </b-nav-item>
+              <b-nav-item to="login" class="block"> Login <span><font-awesome-icon :icon="['fas','sign-in-alt']" /></span></b-nav-item>
+              <b-nav-item to="signup" class="bluePill"> Sign up <span><font-awesome-icon :icon="['fas','user-plus']" /></span></b-nav-item>
           </b-navbar-nav>
         </b-collapse>
       </b-navbar>
