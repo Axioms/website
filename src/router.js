@@ -69,7 +69,7 @@ export default new Router({
     {
       path: '/login',
       name: 'login',
-      component: () => import('./views/login.vue'),
+      component: () => import('./views/Login.vue'),
       beforeEnter: (to, from, next) => {
         if (store.getters.jwtUser) {
           next('/');
