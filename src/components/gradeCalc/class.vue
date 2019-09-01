@@ -45,8 +45,9 @@
 				</b-row>
 				<!-- Grade Scale -->
 				<b-row v-for="(v, index) in $v.settings.scale.$each.$iter" :key="index">
-					<!-- A -->
-					<b-col v-if="classObj.scale[index].letterGrade == 'A'">
+					<!-- A,B,C,D -->
+					<b-col cols="2"></b-col>
+					<b-col v-if="classObj.scale[index].letterGrade != 'F'">
 						<b-form-group :label="classObj.scale[index].letterGrade" label-cols="1" invalid-feedback="A valid Name is required" :state="v.min.$dirty ? !v.min.$error : null">								
 							<b-input-group :append="settings.type ? '' : '%'">
 								<b-input-group-text slot="prepend"><span class="text-primary"><font-awesome-icon :icon="['fas','greater-than-equal']" /></span></b-input-group-text>
@@ -54,8 +55,8 @@
 							</b-input-group>
 						</b-form-group>
 					</b-col>
-					<b-col v-if="classObj.scale[index].letterGrade == 'A'"></b-col>
-					<!-- F	 -->
+					<b-col cols="2" v-if="classObj.scale[index].letterGrade != 'F'"></b-col>
+					<!-- F-->
 					<b-col v-if="classObj.scale[index].letterGrade == 'F'">
 						<b-form-group invalid-feedback="A valid number is required" :label="classObj.scale[index].letterGrade" label-cols="1" :state="v.max.$dirty ? !v.max.$error : null">
 							<b-input-group :append="settings.type ? '' : '%'">
@@ -64,24 +65,7 @@
 							</b-input-group>
 						</b-form-group>
 					</b-col>
-					<b-col v-if="classObj.scale[index].letterGrade == 'F'"></b-col>
-					<!-- B,C,D -->
-					<b-col v-if="classObj.scale[index].letterGrade != 'F' && classObj.scale[index].letterGrade != 'A'">
-						<b-form-group invalid-feedback="A valid number is required" :label="classObj.scale[index].letterGrade" label-cols="1" :state="v.max.$dirty ? !v.max.$error : null">
-							<b-input-group :append="settings.type ? '' : '%'">
-								<b-input-group-text slot="prepend"><span class="text-primary"><font-awesome-icon :icon="['fas','less-than']" /></span></b-input-group-text>
-								<b-form-input class="d-inline" type="number" :placeholder="settings.type ? 'Points' : 'Percentage'" :state="v.max.$dirty ? !v.max.$error : null" v-model.number="v.max.$model" required></b-form-input>
-							</b-input-group>
-						</b-form-group>
-					</b-col>
-					<b-col v-if="classObj.scale[index].letterGrade != 'F' && classObj.scale[index].letterGrade != 'A'">
-						<b-form-group invalid-feedback="A valid Name is required" :state="v.min.$dirty ? !v.min.$error : null">								
-							<b-input-group :append="settings.type ? '' : '%'">
-								<b-input-group-text slot="prepend"><span class="text-primary"><font-awesome-icon :icon="['fas','greater-than-equal']" /></span></b-input-group-text>
-								<b-form-input class="d-inline" type="number" :placeholder="settings.type ? 'Points' : 'Percentage'" :state="v.min.$dirty ? !v.min.$error : null" v-model.number="v.min.$model" required></b-form-input>
-							</b-input-group>
-						</b-form-group>
-					</b-col>
+					<b-col cols="2" v-if="classObj.scale[index].letterGrade == 'F'"></b-col>
 				</b-row>
 				<!-- Grade Scale END -->
 				<!-- Grading System -->
@@ -307,15 +291,15 @@
 					grades = {"grade": grade, "letter": "A"};
 				}
 					
-				else if(this.classObj.scale[1].min <= grade && this.classObj.scale[1].max > grade) {
+				else if(this.classObj.scale[1].min <= grade) {
 					grades = {"grade": grade, "letter": "B"};
 				}
 
-				else if(this.classObj.scale[2].min <= grade && this.classObj.scale[2].max > grade) {
+				else if(this.classObj.scale[2].min <= grade) {
 					grades = {"grade": grade, "letter": "C"};
 				}
 
-				else if(this.classObj.scale[3].min <= grade && this.classObj.scale[3].max > grade) {
+				else if(this.classObj.scale[3].min <= grade) {
 					grades = {"grade": grade, "letter": "D"};
 				}
 

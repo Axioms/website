@@ -141,7 +141,7 @@
 
           this.$axios.post(process.env.VUE_APP_API_ADD + '/grades/create.php', {"name": this.newClass.name, "type": this.newClass.type ? 1:0})
           .then(() => {
-            this.gradebook.push({"name": this.newClass.name, "type": this.newClass.type ? 1:0, "scale":[{"letterGrade": "A","min": 0,"max": 0},{"letterGrade": "B","min": 0,"max": 0},{"letterGrade": "C","min": 0,"max": 0},{"letterGrade": "D","min": 0,"max": 0},{"letterGrade": "F","min": 0,"max": 0}],"grades": [{"name": "", "grade": 0, "points": 0, "weight": 0}]});
+            this.gradebook.push({"name": this.newClass.name, "type": this.newClass.type ? 1:0, "scale":[{"letterGrade": "A","min": 90},{"letterGrade": "B","min": 80},{"letterGrade": "C","min": 70},{"letterGrade": "D","min": 60},{"letterGrade": "F","max": 60}],"grades": [{"name": "", "grade": 0, "points": 0, "weight": 0}]});
             this.resetModal();
           })
           .catch((error) => {
@@ -170,7 +170,7 @@
           });
         }
         else {
-          this.gradebook.push({"name": this.newClass.name, "type": this.newClass.type ? 1:0, "scale":[{"letterGrade": "A","min": 0,"max": 0},{"letterGrade": "B","min": 0,"max": 0},{"letterGrade": "C","min": 0,"max": 0},{"letterGrade": "D","min": 0,"max": 0},{"letterGrade": "F","min": 0,"max": 0}],"grades": [{"name": "", "grade": 0, "points": 0, "weight": 0}]});
+          this.gradebook.push({"name": this.newClass.name, "type": this.newClass.type ? 1:0, "scale":[{"letterGrade": "A","min": 90},{"letterGrade": "B","min": 80},{"letterGrade": "C","min": 70},{"letterGrade": "D","min": 60},{"letterGrade": "F","max": 60}],"grades": [{"name": "", "grade": 0, "points": 0, "weight": 0}]});
         }
       },
       changeName() {
