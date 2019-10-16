@@ -175,7 +175,7 @@
 					if(!this.$v.settings.scale.$invalid && this.hasScaleChanged()) {
 						this.$emit("updateScale", {"index": this.index, "name": this.classObj.name, "scale": this.settings.scale, "id": this.classObj.id});
 					}
-
+					
 					if(this.settings.type ? 1:0 != this.classObj.type) {
 						this.$emit("updateType", {"index": this.index, "type": this.settings.type ? 1:0, "id": this.classObj.id, "name": this.classObj.name});
 					}
@@ -261,12 +261,10 @@
 				scale: {
 					$each: {
 						min: {
-							required,
 							integer,
 							minValue: minValue(0)
 						},
 						max: {
-							required,
 							integer,
 							minValue: minValue(0)
 						}			
@@ -274,6 +272,9 @@
 				},
 				name: {
 					isNameAvalible
+				},
+				type: {
+					required
 				}
 			}
 		},

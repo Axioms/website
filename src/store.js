@@ -16,6 +16,12 @@ export default new Vuex.Store({
   mutations: {
     setJWT(state, jwt) {
       state.JWT = jwt;
+    },
+    setNotePad(state, bool) {
+      state.showNotSignedInErrors.notepad = bool;
+    },
+    setGradeBook(state, bool) {
+      state.showNotSignedInErrors.gradebook = bool;
     }
   },
   actions: {
