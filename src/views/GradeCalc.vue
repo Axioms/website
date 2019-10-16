@@ -32,7 +32,7 @@
      <div v-if="this.$store.state.JWT == ''">
 				<b-row>
 					<b-col class="alert">
-						<b-alert variant="danger" :show="$store.state.showNotSignedInErrors.gradebook" @dismissed="$store.state.showNotSignedInErrors.gradebook = false" dismissible fade> You need to be signed in to save data </b-alert>
+						<b-alert variant="danger" :show="$store.state.showNotSignedInErrors.gradebook" @dismissed="$store.commit('setGradeBook', false)" dismissible fade> You need to be signed in to save data </b-alert>
 					</b-col>
 				</b-row>
 			</div>
