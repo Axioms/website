@@ -53,7 +53,7 @@
 
 			<!-- Main table element -->
 			<b-table show-empty stacked="md" :items="items" :fields="fields" :current-page="currentPage" :per-page="perPage" :filter="filter" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" :sort-direction="sortDirection" @filtered="onFiltered" ref="files" id="files">
-				<template  slot="name" slot-scope="data">
+				<template v-slot:cell(name)="data">
 					<div v-if="data.item.protected == 1" class="displayTable" v-b-tooltip.hover.top title="This file is protected">
 						<p class="text-left"> {{ data.item.name }}{{ data.item.type }} <font-awesome-icon class="text-secondary" :icon="['fas','lock']" /></p> 
 					</div>
@@ -61,9 +61,10 @@
 						<p class="text-left"> {{ data.item.name }}{{ data.item.type }} </p> 
 					</div>
 				</template>
-				<template slot="size" slot-scope="data"> {{ getFileSize(data.item.size) }} </template>
 
-				<template slot="actions" slot-scope="data">
+				<template v-slot:cell(size)="data"> {{ getFileSize(data.item.size) }} </template>
+				
+				<template v-slot:cell(actions)="data">
 					<div class="re-size">
 						<!-- protected file-->
 						<div v-if="data.item.protected == 1">
