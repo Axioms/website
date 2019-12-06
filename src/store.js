@@ -30,6 +30,7 @@ export default new Vuex.Store({
   getters: {
     jwt: state => state.JWT,
     jwtData: (state, getters) => {return state.JWT ? JSON.parse(atob(getters.jwt.split('.')[1])) : null},
-    jwtUser: (state, getters) => {return getters.jwtData ? getters.jwtData.user : null}
+    jwtUser: (state, getters) => {return getters.jwtData ? getters.jwtData.user : null},
+    jwtExpTime: (state, getters) => {return getters.jwtData ? getters.jwtData.exp : null}
   }
 })
