@@ -68,9 +68,9 @@
       }
     },
     created() {
-        window.addEventListener('beforeunload', () => {
-          //this.$store.commit('setJWT', "");
-        }, false)
+      if (new Date > new Date(this.$store.getters.jwtExpTime * 1000)) {
+        this.signout();
+      }
     }
   }
 </script>

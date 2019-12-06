@@ -47,7 +47,7 @@
 
 <script>
 	import { validationMixin } from 'vuelidate';
-	import { required, minLength, integer, minValue, maxValue } from 'vuelidate/lib/validators';
+	import { required, minLength, numeric, minValue, maxValue } from 'vuelidate/lib/validators';
 	export default {
 		name: 'Grade',
 		mixins: [validationMixin],
@@ -85,17 +85,17 @@
 				},
 				grade: {
 					required,
-					integer,
+					numeric,
 					minValue: minValue(0)
 				},
 				points: {
 					required,
-					integer,
+					numeric,
 					minValue: minValue(0)
 				},
 				weight: {
 					required,
-					integer,
+					numeric,
 					minValue: minValue(0),
 					maxValue: maxValue(100)
 				}

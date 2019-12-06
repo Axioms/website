@@ -30,8 +30,7 @@ export default new Router({
         if (store.getters.jwtUser) {
           next();
         } else {
-          next();
-          //next('/login');
+          next('/login');
         }
       }
     },
