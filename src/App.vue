@@ -47,7 +47,6 @@
     },
     methods: {
       async signout() {
-        console.log(this.$store.getters.jwt);
         this.$axios.defaults.headers.common["Authorization"] ="Bearer" + " " + this.$store.getters.jwt;
         this.$axios.post(process.env.VUE_APP_API + "/auth/signout", {})
           .then(() => {
