@@ -7,10 +7,6 @@
 		<div v-for="(grade, index) in classObj.grades" :key="grade.id">
 			<Grade :gradeObj="grade" :index="index" :type="classObj.type" @addGrade="addGrade" @deleteGrade="deleteGrade" @updateGrades="updateGrades"></Grade>
 		</div>
-
-		<div class="pt-4">
-			<p class="display-5 text-center"> {{ getLetterGrade }} </p>
-		</div>
 		
 		<div class="float-left settings" v-on:click="addToEnd">
 			<p class="mb-0"><font-awesome-icon :icon="['fas','plus']" size="lg"/></p>
@@ -110,7 +106,8 @@
 <script>
   import Grade from '@/components/gradeCalc/grade.vue';
 	import { validationMixin } from 'vuelidate';
-	import { required, minValue, integer } from 'vuelidate/lib/validators';
+	import { required, minValue, integer, minLength } from 'vuelidate/lib/validators';
+import { reject } from 'q';
 	var timeSinceLastUpdate = new Date();
 	function isNameAvalible() {
 		for(var i=0; i < this.names.length; i++) {
@@ -176,7 +173,7 @@
 						this.$emit("updateScale", {"index": this.index, "name": this.classObj.name, "scale": this.settings.scale, "id": this.classObj.id});
 					}
 					
-					if(this.settings.type ? 1:0 != this.classObj.type) {
+					if((this.settings.type ? 1:0) != (this.classObj.type ? 1:0)) {
 						this.$emit("updateType", {"index": this.index, "type": this.settings.type ? 1:0, "id": this.classObj.id, "name": this.classObj.name});
 					}
 					
@@ -219,7 +216,7 @@
 				if(!this.$store.state.jwt == '' && hasBeenMoreThanASecond()) {
 					this.$axios.defaults.headers.common['Authorization'] = 'Bearer' + ' ' + this.$store.getters.jwt;
 
-					this.$axios.post(process.env.VUE_APP_API + '/grades/updateGrades.php', {"name": this.classObj.name, "grades": this.classObj.grades})
+					this.$axios.post(process.env.VUE_APP_API + '/grades/updateGrades', {"name": this.classObj.name, "grades": this.classObj.grades})
 					.then(() => {
 					})
 					.catch((error) => {
@@ -272,7 +269,16 @@
 					}
 				},
 				name: {
-					isNameAvalible
+					minLength: minLength(4),
+					uniquename(value) {
+						var gradebook = JSON.parse(JSON.stringify(this.classObj));
+						let isValid = true;
+						for(var  i=0; i < this.names.length; i++) {
+							if(this.names[i] == value)
+							isValid = false;
+						}
+						return isValid;
+					},
 				},
 				type: {
 					required
@@ -353,5 +359,15 @@
 	}
 	.user-select-none { 
 		user-select: none; 
+	}
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		/* display: none; <- Crashes Chrome on hover */
+		-webkit-appearance: none;
+		margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+	}
+
+	input[type=number] {
+		-moz-appearance:textfield; /* Firefox */
 	}
 </style>

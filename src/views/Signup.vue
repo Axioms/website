@@ -80,7 +80,7 @@
         methods: {
             async register() {
                     if(this.signup.password == this.signup.passwordVar) {
-                        this.$axios.post(process.env.VUE_APP_API + '/auth/register.php', {
+                        this.$axios.post(process.env.VUE_APP_API + '/auth/register', {
                             'username' : this.signup.username,
                             'password' : this.signup.password
                         })
