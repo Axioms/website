@@ -70,7 +70,7 @@
             },
         methods: {
             async login() {
-                this.$axios.post(process.env.VUE_APP_API + '/auth/login.php', {
+                this.$axios.post(process.env.VUE_APP_API + '/auth/login', {
                     'username' : this.loginData.username,
                     'password' : this.loginData.password
                 })

@@ -11,20 +11,20 @@
 				</b-col>
 				<b-col v-if="type == 1">
 					<b-form-group description="Points" :state="$v.gradeObj.points.$dirty ? !$v.gradeObj.points.$error : null" invalid-feedback="A valid number is required">
-						<b-form-input v-model.number="$v.gradeObj.points.$model" type="number" placeholder="points" :state="$v.gradeObj.points.$dirty ? !$v.gradeObj.points.$error : null"></b-form-input>
+						<b-form-input v-model.number="$v.gradeObj.points.$model" type="number" placeholder="points" step=any :state="$v.gradeObj.points.$dirty ? !$v.gradeObj.points.$error : null"></b-form-input>
 					</b-form-group>
 				</b-col>
 				<b-col v-else>
 					<b-form-group description="Score" :state="$v.gradeObj.grade.$dirty ? !$v.gradeObj.grade.$error : null" invalid-feedback="A valid number is required">
 						<b-input-group append="%">
-							<b-form-input v-model.number="$v.gradeObj.grade.$model" type="number" placeholder="grade" :state="$v.gradeObj.grade.$dirty ? !$v.gradeObj.grade.$error : null"></b-form-input>
+							<b-form-input v-model.number="$v.gradeObj.grade.$model" type="number" step=any placeholder="grade" :state="$v.gradeObj.grade.$dirty ? !$v.gradeObj.grade.$error : null"></b-form-input>
 						</b-input-group>
 					</b-form-group>
 				</b-col>
 				<b-col v-if="type == 0">
 					<b-form-group description="Weight" :state="$v.gradeObj.weight.$dirty ? !$v.gradeObj.weight.$error : null" invalid-feedback="A valid number is required">
 						<b-input-group append="%">
-							<b-form-input v-model.number="$v.gradeObj.weight.$model" type="number" placeholder="grade weight" :state="$v.gradeObj.weight.$dirty ? !$v.gradeObj.weight.$error : null"></b-form-input>
+							<b-form-input v-model.number="$v.gradeObj.weight.$model" type="number" step=any placeholder="grade weight" :state="$v.gradeObj.weight.$dirty ? !$v.gradeObj.weight.$error : null"></b-form-input>
 						</b-input-group>
 					</b-form-group>
 				</b-col>
@@ -97,7 +97,7 @@
 					required,
 					decimal,
 					minValue: minValue(0),
-					maxValue: maxValue(100)
+					maxValue: maxValue(500)
 				}
 			}
 		}
@@ -114,5 +114,16 @@
 	}
 	.input-group-text {
 		background-color: rgba(0,0,0,0) !important;
+	}
+
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		/* display: none; <- Crashes Chrome on hover */
+		-webkit-appearance: none;
+		margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+	}
+
+	input[type=number] {
+		-moz-appearance:textfield; /* Firefox */
 	}
 </style>
