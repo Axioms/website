@@ -60,7 +60,7 @@ export default {
 			}
 
 			var ifrm = document.createElement("iframe");
-			let link = process.env.VUE_APP_DOWNLOAD_FILE + this.$store.getters.jwtUser + '&' + 'file=' + file;
+			let link = process.env.VUE_APP_API + "/files/download.php?uuid=" + this.$store.getters.jwtUuid + '&' + 'file=' + file;
 			ifrm.setAttribute("src", link);
 			ifrm.style.width = "0px";
 			ifrm.style.height = "0px";
@@ -71,7 +71,7 @@ export default {
 			this.$axios.defaults.headers.common['Authorization'] = 'Bearer' + ' ' + this.$store.getters.jwt;
 			this.makeToast("Info", "The File is being downloaded. You may leave this page", 4, "info");
 			this.$axios({
-				url: process.env.VUE_APP_API_ADD + '/files/secureDownload.php?file=' + file,
+				url: process.env.VUE_APP_API + '/files/secureDownload.php?file=' + file,
 				method: 'GET',
 				responseType: 'blob', // important
 			}).then((response) => {
@@ -101,7 +101,7 @@ export default {
 		async deleteFile(file) {
 			this.$axios.defaults.headers.common['Authorization'] = 'Bearer' + ' ' + this.$store.getters.jwt;
 			
-			this.$axios.get(process.env.VUE_APP_API_ADD + '/files/delete.php?file=' + file + '&confirmation=true')
+			this.$axios.get(process.env.VUE_APP_API + '/files/delete.php?file=' + file + '&confirmation=true')
 				.then(() => {
 					this.makeToast("Success!", "The file was successfully deleted!", 4, "success");
 				})
@@ -123,7 +123,7 @@ export default {
 					this.id = '';
 					this.$axios.defaults.headers.common['Authorization'] = 'Bearer' + ' ' + this.$store.getters.jwt;
 
-					this.$axios.post(process.env.VUE_APP_API_ADD + '/files/read.php', {}).then(response => {
+					this.$axios.post(process.env.VUE_APP_API + '/files/read.php', {}).then(response => {
 						this.items = response.data.files;
 						this.totalRows = this.items.length;
 					}).catch(error => {
@@ -231,7 +231,7 @@ export default {
 	created: function () {
 		this.$axios.defaults.headers.common['Authorization'] = 'Bearer' + ' ' + this.$store.getters.jwt;
 
-		this.$axios.post(process.env.VUE_APP_API_ADD + '/files/read.php', {})
+		this.$axios.post(process.env.VUE_APP_API + '/files/read.php', {})
 			.then(response => {
 				this.items = response.data.files;
 				this.totalRows = this.items.length;

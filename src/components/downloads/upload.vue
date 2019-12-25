@@ -54,7 +54,7 @@ export default {
                 formData.append('upload[' + i + ']', file);
             }
             this.$axios.defaults.headers.common['Authorization'] = 'Bearer' + ' ' + this.$store.getters.jwt;
-            this.$axios.post( process.env.VUE_APP_API_ADD + '/files/upload.php', formData, {
+            this.$axios.post( process.env.VUE_APP_API + '/files/upload.php', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 },

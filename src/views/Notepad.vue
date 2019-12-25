@@ -2,7 +2,7 @@
 	<div class="notepad">
 		<b-container>
 			<Notes></Notes>
-			<div v-if="this.$store.state.JWT == ''">
+			<div v-if="this.$store.state.jwt == ''">
 				<b-row>
 					<b-col class="alert">
 						<b-alert :show="$store.state.showNotSignedInErrors.notepad" @dismissed="$store.commit('setNotePad', false)" variant="danger" dismissible fade> You need to be signed in to save notes </b-alert>
