@@ -28,7 +28,6 @@
               <b-dropdown-item v-on:click="signout" href="#">Sign out <span><font-awesome-icon :icon="['fas', 'sign-out-alt']"/></span></b-dropdown-item>
             </b-nav-item-dropdown>
           </b-navbar-nav>
-
           <b-navbar-nav class="ml-auto rightnavPad" v-else>
             <b-nav-item to="login" class="block">Login <span><font-awesome-icon :icon="['fas', 'sign-in-alt']"/></span></b-nav-item>
             <b-nav-item to="signup" class="bluePill">Sign up <span><font-awesome-icon :icon="['fas', 'user-plus']"/></span></b-nav-item>
@@ -37,6 +36,7 @@
       </b-navbar>
     </div>
     <router-view/>
+    <b-alert v-model="this.$store.state.siteUpdateDowloaded" class="updateNeeded" variant="primary"><p @click="updateSite" class="text">Site update Avalible. Click here to update!!</p></b-alert>
   </div>
 </template>
 

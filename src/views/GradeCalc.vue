@@ -89,7 +89,6 @@
           isValid = true;
 
           for(var  i=0; i < this.gradebook.length; i++) {
-            console.log("checking " + this.gradebook[i].name + " and " + this.className);
             if(this.gradebook[i].name == this.className)
               isValid = false;
           }
