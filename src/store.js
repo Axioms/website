@@ -8,6 +8,7 @@ export default new Vuex.Store({
   state: {
     jwt: '',
     username: '',
+    siteUpdateDowloaded: false,
     showNotSignedInErrors: {
       notepad: true,
       gradebook: true
@@ -18,8 +19,11 @@ export default new Vuex.Store({
     setJWT(state, jwt) {
       state.jwt = jwt;
     },
-    setUsrname(state, username) {
+    setUsername(state, username) {
       state.username = username;
+    },
+    setSiteUpdateDowloaded(state, siteUpdateDowloaded) {
+      state.siteUpdateDowloaded = siteUpdateDowloaded;
     },
     setNotePad(state, bool) {
       state.showNotSignedInErrors.notepad = bool;
@@ -32,6 +36,7 @@ export default new Vuex.Store({
   getters: {
     jwt: state => state.jwt,
     username: state => state.username,
+    siteUpdateDowloaded: state => state.siteUpdateDowloaded,
     jwtData: (state, getters) => {
       return state.jwt ? JSON.parse(atob(getters.jwt.split(".")[1])) : null;
     },

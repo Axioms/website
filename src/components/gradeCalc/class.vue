@@ -107,18 +107,7 @@
   import Grade from '@/components/gradeCalc/grade.vue';
 	import { validationMixin } from 'vuelidate';
 	import { required, minValue, integer, minLength } from 'vuelidate/lib/validators';
-import { reject } from 'q';
 	var timeSinceLastUpdate = new Date();
-	function isNameAvalible() {
-		for(var i=0; i < this.names.length; i++) {
-			if(this.settings.name == this.names[i]) {
-				if(this.settings.name != this.classObj.name) {
-					return false;
-				}
-			}
-		}
-		return true;
-	}
 	function hasBeenMoreThanASecond() {
 		var now = new Date();
 		if(Math.abs(timeSinceLastUpdate.getSeconds() - now.getSeconds()) >= 1) {
@@ -271,7 +260,6 @@ import { reject } from 'q';
 				name: {
 					minLength: minLength(4),
 					uniquename(value) {
-						var gradebook = JSON.parse(JSON.stringify(this.classObj));
 						let isValid = true;
 						for(var  i=0; i < this.names.length; i++) {
 							if(this.names[i] == value)
