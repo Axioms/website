@@ -58,7 +58,4 @@
  .nav-link {
     display: block;
   }
-  .nav_cat {
-    display: inherit;
-  }
 </style>
