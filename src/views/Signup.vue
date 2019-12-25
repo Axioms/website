@@ -7,10 +7,6 @@
                     <b-col cols="3"></b-col>
                     <b-col>
                         <b-form v-on:submit.stop.prevent="register">
-                            <b-form-group class="form" :state="$v.signup.email.$dirty ? !$v.signup.email.$error : null" invalid-feedback="A valid email address is required">
-                                <b-form-input id="input-1" :state="$v.signup.email.$dirty ? !$v.signup.email.$error : null" v-model="$v.signup.email.$model" type="email" required placeholder="Email"></b-form-input>
-                            </b-form-group>
-
                             <b-form-group class="form" :state="$v.signup.username.$dirty ? !$v.signup.username.$error : null" invalid-feedback="Username must be atleast 4 characters long">
                                 <b-form-input id="input-2" :state="$v.signup.username.$dirty ? !$v.signup.username.$error : null" v-model="$v.signup.username.$model" type="text" required placeholder="Username"></b-form-input>
                             </b-form-group>
@@ -48,13 +44,12 @@
 
 <script>
     import { validationMixin } from 'vuelidate';
-    import { required, minLength, sameAs, email, maxLength } from 'vuelidate/lib/validators';
+    import { required, minLength, sameAs, maxLength } from 'vuelidate/lib/validators';
     export default {
         mixins: [validationMixin],
         data() {
             return {
                 signup: {
-                    email: '',
                     username: '',
                     password: '',
                     passwordVar: ''
@@ -66,14 +61,10 @@
         },
         validations: {
             signup: {
-                email: {
-                    required,
-                    email
-                },
                 username: {
                     required,
                     minLength: minLength(4),
-                    maxLength: maxLength(250)
+                    maxLength: maxLength(27)
                 },
                 password: {
                     required,
@@ -89,14 +80,17 @@
         methods: {
             async register() {
                     if(this.signup.password == this.signup.passwordVar) {
-                        this.$axios.post(process.env.VUE_APP_API_ADD + '/auth/register.php', {
-                            'email' : this.signup.email,
+                        this.$axios.post(process.env.VUE_APP_API + '/auth/register.php', {
                             'username' : this.signup.username,
                             'password' : this.signup.password
                         })
                         .then((response) => {
-                            this.$store.commit('setJWT', response.data.token);
-                            this.$router.push({ name: 'home', query: { redirect: '/' } });
+                            if(response.data.message == "success") {
+                                this.$router.push({ name: 'login'});
+                            }
+                            else {
+                                1/0;    
+                            }
                         })
                         .catch((error) => {
                             this.apiErr = error.response.data.message;

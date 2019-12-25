@@ -29,7 +29,7 @@
           </div>
         </div>
       </div>
-     <div v-if="this.$store.state.JWT == ''">
+     <div v-if="this.$store.state.jwt == ''">
 				<b-row>
 					<b-col class="alert">
 						<b-alert variant="danger" :show="$store.state.showNotSignedInErrors.gradebook" @dismissed="$store.commit('setGradeBook', false)" dismissible fade> You need to be signed in to save data </b-alert>
@@ -136,10 +136,10 @@
         this.changeName();
       },
       addClass() {
-        if(!this.$store.state.JWT == '') {
+        if(!this.$store.state.jwt == '') {
           this.$axios.defaults.headers.common['Authorization'] = 'Bearer' + ' ' + this.$store.getters.jwt;
 
-          this.$axios.post(process.env.VUE_APP_API_ADD + '/grades/create.php', {"name": this.newClass.name, "type": this.newClass.type ? 1:0})
+          this.$axios.post(process.env.VUE_APP_API + '/grades/create.php', {"name": this.newClass.name, "type": this.newClass.type ? 1:0})
           .then(() => {
             this.gradebook.push({"name": this.newClass.name, "type": this.newClass.type ? 1:0, "scale":[{"letterGrade": "A","min": 90},{"letterGrade": "B","min": 80},{"letterGrade": "C","min": 70},{"letterGrade": "D","min": 60},{"letterGrade": "F","max": 60}],"grades": [{"name": "", "grade": 0, "points": 0, "weight": 0}]});
             this.resetModal();
@@ -174,16 +174,18 @@
         }
       },
       changeName() {
-        if(!this.$store.state.JWT == '') {
+        if(!this.$store.state.jwt == '') {
           this.$axios.defaults.headers.common['Authorization'] = 'Bearer' + ' ' + this.$store.getters.jwt;
-          this.$axios.post(process.env.VUE_APP_API_ADD + '/grades/updateName.php', {"name": this.className, "id": this.id})
+          this.$axios.post(process.env.VUE_APP_API + '/grades/updateName.php', {"name": this.className, "id": this.id})
           .then(() => {
             this.gradebook[this.index].name = this.className;
+            this.$nextTick(() => {
             this.className = '';
             this.classNameState = null;
             this.id = null;
             this.index = null;
             this.resetModal();
+            });
           })
           .catch((error) => {
             if (error.response.data.message == "Invalid Token") {
@@ -212,11 +214,13 @@
         }
         else {
           this.gradebook[this.index].name = this.className;
+          this.$nextTick(() => {
             this.className = '';
             this.classNameState = null;
             this.id = null;
             this.index = null;
             this.resetModal();
+          });
         }
       },
       createClass() {
@@ -255,10 +259,10 @@
       },
       classChangeScale(obj) {
         obj.scale = JSON.parse(JSON.stringify(obj.scale));
-        if(!this.$store.state.JWT == '') {
+        if(!this.$store.state.jwt == '') {
           this.$axios.defaults.headers.common['Authorization'] = 'Bearer' + ' ' + this.$store.getters.jwt;
 
-          this.$axios.post(process.env.VUE_APP_API_ADD + '/grades/updateScale.php', {"name": obj.name, "scale": obj.scale})
+          this.$axios.post(process.env.VUE_APP_API + '/grades/updateScale.php', {"name": obj.name, "scale": obj.scale})
           .then(() => {
             this.gradebook[obj.index].scale = obj.scale;
           })
@@ -283,9 +287,9 @@
         }
       },
       classChangeType(obj) {
-        if(!this.$store.state.JWT == '') {
+        if(!this.$store.state.jwt == '') {
           this.$axios.defaults.headers.common['Authorization'] = 'Bearer' + ' ' + this.$store.getters.jwt;
-          this.$axios.post(process.env.VUE_APP_API_ADD + '/grades/updateType.php', {"name": obj.name, "type": obj.type ? 1:0})
+          this.$axios.post(process.env.VUE_APP_API + '/grades/updateType.php', {"name": obj.name, "type": obj.type ? 1:0})
           .then(() => {
             this.gradebook[obj.index].type = obj.type ? 1:0;
           })
@@ -320,9 +324,9 @@
         }
       },
       classDelete(obj) {
-        if(!this.$store.state.JWT == '') {
+        if(!this.$store.state.jwt == '') {
           this.$axios.defaults.headers.common['Authorization'] = 'Bearer' + ' ' + this.$store.getters.jwt;
-          this.$axios.post(process.env.VUE_APP_API_ADD + '/grades/delete.php', {"name": obj.name})
+          this.$axios.post(process.env.VUE_APP_API + '/grades/delete.php', {"name": obj.name})
           .then(() => {
             this.gradebook.splice(obj.index,1);
             this.currentPage = -1;
@@ -376,10 +380,10 @@
       Class
     },
     created: function() {
-      if (!this.$store.state.JWT == '') {
+      if (!this.$store.state.jwt == '') {
         this.$axios.defaults.headers.common['Authorization'] = 'Bearer' + ' ' + this.$store.getters.jwt;
 
-        this.$axios.post(process.env.VUE_APP_API_ADD + '/grades/read.php', {})
+        this.$axios.post(process.env.VUE_APP_API + '/grades/read.php', {})
         .then((response) => {
           this.gradebook = response.data.message.gradebook;
           this.$bvToast.toast("connected to the server!", {

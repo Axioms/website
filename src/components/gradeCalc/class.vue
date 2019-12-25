@@ -216,10 +216,10 @@
 				this.classObj.grades.push({"name": "","grade": 0,"points": 0,"weight": 0});
 			},
 			updateGrades() {
-				if(!this.$store.state.JWT == '' && hasBeenMoreThanASecond()) {
+				if(!this.$store.state.jwt == '' && hasBeenMoreThanASecond()) {
 					this.$axios.defaults.headers.common['Authorization'] = 'Bearer' + ' ' + this.$store.getters.jwt;
 
-					this.$axios.post(process.env.VUE_APP_API_ADD + '/grades/updateGrades.php', {"name": this.classObj.name, "grades": this.classObj.grades})
+					this.$axios.post(process.env.VUE_APP_API + '/grades/updateGrades.php', {"name": this.classObj.name, "grades": this.classObj.grades})
 					.then(() => {
 					})
 					.catch((error) => {
@@ -253,6 +253,7 @@
 				for(var i=0; i < this.classObj.grades.length; i++) {
 					points += this.classObj.grades[i].points;
 				}
+				
 				return points;
 			}
 		},
@@ -312,11 +313,16 @@
 					grades = {"grade": '', "letter": ''};
 				}
 
-				if(grades.letter == '') {
+				if(grades.letter == '' || grades.grade == 0) {
 					return '';
 				}
 				else {
-					return grades.letter + " (" + grades.grade + "%) "; 
+					if(this.classObj.type == 0){
+						return grades.letter + " (" + grades.grade + "%) "; 
+					}
+					else {
+						return grades.letter + " (" + grades.grade + " points) ";
+					}
 				}
 			}
 		},

@@ -7,11 +7,11 @@
                     <b-col cols="3"></b-col>
                     <b-col>
                         <b-form @submit.prevent="login()">
-                            <b-form-group class="form" :state="$v.loginData.email.$dirty ? !$v.loginData.email.$error : null" invalid-feedback="A valid email address is required">
-                                <b-form-input id="input-1" :state="$v.loginData.email.$dirty ? !$v.loginData.email.$error : null" v-model="$v.loginData.email.$model" type="email" required placeholder="Email"></b-form-input>
+                            <b-form-group class="form" :state="$v.loginData.username.$dirty ? !$v.loginData.username.$error : null" invalid-feedback="username must be between 4 and 27 characters long">
+                                <b-form-input id="input-1" :state="$v.loginData.username.$dirty ? !$v.loginData.username.$error : null" v-model="$v.loginData.username.$model" type="text" required placeholder="Username"></b-form-input>
                             </b-form-group>
 
-                            <b-form-group class="form" :state="$v.loginData.password.$dirty ? !$v.loginData.password.$error : null" invalid-feedback="A valid password is required">
+                            <b-form-group class="form" :state="$v.loginData.password.$dirty ? !$v.loginData.password.$error : null" invalid-feedback="password must be between 8 and 27 characters long">
                                 <b-form-input id="input-2" :state="$v.loginData.password.$dirty ? !$v.loginData.password.$error : null" v-model="$v.loginData.password.$model" type="password" required placeholder="Password"></b-form-input>
                             </b-form-group>
 
@@ -40,13 +40,13 @@
 
 <script>
     import { validationMixin } from 'vuelidate';
-    import { required, minLength, email, maxLength } from 'vuelidate/lib/validators';
+    import { required, minLength, maxLength } from 'vuelidate/lib/validators';
     export default {
         mixins: [validationMixin],
         data() {
             return {
                 loginData: {
-                    email: '',
+                    username: '',
                     password: ''
                 },
                 apiErr: null,
@@ -56,9 +56,10 @@
         },
         validations: {
                 loginData: {
-                    email: {
+                    username: {
                         required,
-                        email
+                        minLenght: minLength(4),
+                        maxLength: maxLength(27)
                     },
                     password: {
                         required,
@@ -69,16 +70,17 @@
             },
         methods: {
             async login() {
-                this.$axios.post(process.env.VUE_APP_API_ADD + '/auth/login.php', {
-                    'email' : this.loginData.email,
+                this.$axios.post(process.env.VUE_APP_API + '/auth/login.php', {
+                    'username' : this.loginData.username,
                     'password' : this.loginData.password
                 })
                 .then((response) => {
                     this.$store.commit('setJWT', response.data.token);
-                    if(this.$store.getters.jwtUser) {
+                    if(this.$store.getters.jwtUuid) {
+                        this.$store.commit("setUsrname", this.loginData.username);
                         this.$router.push({ name: 'home', query: { redirect: '/' } });
                     } else {
-                        this.$store.commit('setJWT', "");
+                        this.$store.commit('setJWT', response.data.token);
                     }
                 })
                 .catch((error) => {

@@ -54,9 +54,9 @@ export default {
 			this.update("Could not delete note. Unable to connect to server", "delete");
 		},
 		update(errormsg, type) {
-			if(this.$store.state.JWT != '') {
+			if(this.$store.state.jwt != '') {
 				this.$axios.defaults.headers.common['Authorization'] = 'Bearer' + ' ' + this.$store.getters.jwt;
-				this.$axios.post(process.env.VUE_APP_API_ADD + '/notepad/update.php', {"notes": this.notes})
+				this.$axios.post(process.env.VUE_APP_API + '/notepad/update.php', {"notes": this.notes})
 				.then(() => {
 				})
 				.catch((error) => {
@@ -92,10 +92,10 @@ export default {
 		}
 	},
 	created: function () {
-		if (this.$store.state.JWT != '') {
+		if (this.$store.state.jwt != '') {
 			this.$axios.defaults.headers.common['Authorization'] = 'Bearer' + ' ' + this.$store.getters.jwt;
 
-			this.$axios.post(process.env.VUE_APP_API_ADD + '/notepad/read.php', {})
+			this.$axios.post(process.env.VUE_APP_API + '/notepad/read.php', {})
 			.then((response) => {
 				this.notes = JSON.parse(response.data.message.notes);
 				this.$bvToast.toast("connected to the server!", {
