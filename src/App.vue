@@ -37,7 +37,6 @@
       </b-navbar>
     </div>
     <router-view/>
-    <b-alert v-model="this.$store.state.siteUpdateDowloaded" class="updateNeeded" variant="primary"><p @click="updateSite" class="text">Site update Avalible. Click here to update!!</p></b-alert>
   </div>
 </template>
 
