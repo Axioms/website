@@ -23,9 +23,9 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ "./views/Vpn.vue")
     },
     {
-      path: "/downloads",
-      name: "downloads",
-      component: () => import("./views/Download.vue"),
+      path: "/filemanager",
+      name: "filemanager",
+      component: () => import("./views/Filemanager.vue"),
       beforeEnter: (to, from, next) => {
         if (store.getters.jwt) {
           next();
@@ -39,20 +39,25 @@ export default new Router({
       name: "ssh",
       component: () => import("./views/Ssh.vue")
     },
-    {
+    /*{
       path: "/about",
       name: "about",
       component: () => import("./views/About.vue")
-    },
+    },*/
     {
       path: "/gradeCalc",
       name: "gradeCalc",
       component: () => import("./views/GradeCalc.vue")
     },
     {
-      path: "/notepad",
-      name: "notepad",
-      component: () => import("./views/Notepad.vue")
+      path: "/passwordreset",
+      name: "passwordreset",
+      component: () => import("./views/Passwordreset.vue")
+    },
+    {
+      path: "/notes",
+      name: "notes",
+      component: () => import("./views/Notes.vue")
     },
     {
       path: "/signup",
@@ -65,6 +70,11 @@ export default new Router({
           next();
         }
       }
+    },
+    {
+      path: "/profile",
+      name: "profile",
+      component: () => import("./views/Profile.vue")
     },
     {
       path: "/login",

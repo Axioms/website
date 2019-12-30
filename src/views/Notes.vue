@@ -1,5 +1,5 @@
 <template>
-	<div class="notepad">
+	<div class="notes">
 		<b-container>
 			<Notes></Notes>
 			<div v-if="this.$store.state.jwt == ''">

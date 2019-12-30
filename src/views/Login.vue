@@ -1,6 +1,6 @@
 <template>
     <div class="login">
-        <b-container class="test">
+        <b-container>
             <b-card bg-variant="light" class="border">
                 <h5 class="text-dark pad-down">Login</h5>
                 <b-row>
@@ -15,10 +15,19 @@
                                 <b-form-input id="input-2" :state="$v.loginData.password.$dirty ? !$v.loginData.password.$error : null" v-model="$v.loginData.password.$model" type="password" required placeholder="Password"></b-form-input>
                             </b-form-group>
 
+                            <b-form-group class="form" v-if="isSecondFactorRequied">
+                                <b-form-input id="input-3" v-model="$v.loginData.otp.$model" type="text" required placeholder="One Time Password"></b-form-input>
+                            </b-form-group>
+
                             <b-button type="submit" :disabled="$v.loginData.$invalid" variant="outline-primary">Submit</b-button>
                         </b-form>
                     </b-col>
                     <b-col cols="3"></b-col>
+                </b-row>
+                <b-row class="pt-4">
+                    <b-col>
+                        <router-link to="/passwordreset">Forgot Password</router-link>
+                    </b-col>
                 </b-row>
                 <b-row>
                     <b-col></b-col>
@@ -47,11 +56,13 @@
             return {
                 loginData: {
                     username: '',
-                    password: ''
+                    password: '',
+                    otp: ''
                 },
                 apiErr: null,
                 dismissSecs: 10,
-                dismissCountDown: 0
+                dismissCountDown: 0,
+                isSecondFactorRequied: false
             }
         },
         validations: {
@@ -65,30 +76,48 @@
                         required,
                         minLength: minLength(8),
                         maxLength: maxLength(27)
+                    },
+                    otp: {
+                        minLenght: minLength(0)
                     }
                 }
             },
         methods: {
             async login() {
-                this.$axios.post(process.env.VUE_APP_API + '/auth/login', {
-                    'username' : this.loginData.username,
-                    'password' : this.loginData.password
-                })
+                let loginInfo = this.loginData.username + ":" + this.loginData.password;
+                let config = {
+                    headers: {
+                        'X-Axiom-Identity-Token': btoa(loginInfo).replace(/=+$/,""),
+                        'X-Axiom-Signed-Otp': btoa(this.loginData.otp).replace(/=+$/,""),
+                    }
+                };
+                this.$axios.post(process.env.VUE_APP_API + '/auth/login', {}, config)
                 .then((response) => {
                     this.$store.commit('setJWT', response.data.token);
                     if(this.$store.getters.jwtUuid) {
-                        this.$store.commit("setUsrname", this.loginData.username);
+                        this.$store.commit("setUsername", this.loginData.username);
+
+                        if(this.loginData.otp != '') {
+                            this.$store.commit("setUsedOTP", true);
+                        }
+
                         this.$router.push({ name: 'home', query: { redirect: '/' } });
                     } else {
-                        this.$store.commit('setJWT', response.data.token);
+                        this.$store.commit('setJWT', '');
                     }
                 })
                 .catch((error) => {
-                    this.apiErr = error.response.data.message;
-                    if(this.apiErr == undefined) {
-                        this.apiErr = "Could not communicate with the server.";
+
+                    if(error.response.data.message != "Second Factor Auth Is Required To Login") {
+                        this.apiErr = error.response.data.message;
+                        if(this.apiErr == undefined) {
+                            this.apiErr = "Could not communicate with the server.";
+                        }
+                        this.showAlert();
                     }
-                    this.showAlert();
+                    else {
+                        this.isSecondFactorRequied = true;
+                    }
                 });
             },
             countDownChanged(dismissCountDown) {

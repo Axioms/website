@@ -3,7 +3,7 @@
 		<div class="card">
 
 			<div class="card-header shadow rounded-top">
-				<h4 class="text-primary title d-inline-block">NotePad</h4>
+				<h4 class="text-primary title d-inline-block">Notes</h4>
 			</div>
 
 			<div class="card-body shadow bg-white rounded-bottom">
@@ -97,15 +97,10 @@ export default {
 
 			this.$axios.post(process.env.VUE_APP_API + '/notepad/read', {})
 			.then((response) => {
-				this.notes = JSON.parse(response.data.message.notes);
-				this.$bvToast.toast("connected to the server!", {
-					title: "connected!",
-					toaster: 'b-toaster-top-left',
-					autoHideDelay: 1000,
-					variant: "success",
-					solid: false,
-					appendToast: false
-				})})
+				if(response.data.message != "No notes found.") {
+					this.notes = JSON.parse(response.data.message.notes);
+				}
+			})
 			.catch((error) => {
 				if (error.response.data.message == "Invalid Token") {
 					this.$root.$bvToast.toast("User has been logged out", {

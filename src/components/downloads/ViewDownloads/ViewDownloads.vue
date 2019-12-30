@@ -4,7 +4,7 @@
 		<div v-if="items.length == 0">
 			<b-spinner v-if="!hideLoading" class="mt-5 mb-4" variant="dark" type="grow" label="Loading..."></b-spinner>
 			<div v-else>
-				<p class="text-center">Unable to reach the server</p>
+				<p class="text-center">{{ this.filerr }}</p>
 			</div>
 		</div>
 		<div v-else>

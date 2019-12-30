@@ -38,7 +38,7 @@
 export default {
     data() {
         return {
-            files: '',
+            files: null,
             uploadPercentage: 0,
             showPorgress: false,
             hasFailed: null

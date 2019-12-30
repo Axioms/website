@@ -14,18 +14,19 @@
           <b-navbar-nav>
             <b-nav-item to="/"> Home </b-nav-item>
             <b-nav-item to="/vpn"> VPN </b-nav-item>
-            <b-nav-item to="/downloads"> Downloads </b-nav-item>
+            <b-nav-item to="/filemanager"> File Manager </b-nav-item>
             <b-nav-item to="/ssh"> SSH Tools </b-nav-item>
             <b-nav-item to="/gradeCalc"> Grade Calculator </b-nav-item>
-            <b-nav-item to="/notepad"> notepad </b-nav-item>
-            <b-nav-item to="about" disabled> About </b-nav-item>
+            <b-nav-item to="/notes"> Notes </b-nav-item>
+            <b-nav-item to="/downloads" disabled> Downloads </b-nav-item>
+            <b-nav-item to="/ about" disabled> About </b-nav-item>
           </b-navbar-nav>
           <b-navbar-nav class="ml-auto rightnavPad" v-if="this.$store.state.jwt != ''">
-            <b-nav-item-dropdown right>
+            <b-nav-item-dropdown class="bg-dark" right>
               <!-- Using 'button-content' slot -->
               <template slot="button-content"><em>{{ this.$store.state.username }}</em></template>
-              <b-dropdown-item disabled href="#">Profile <span><font-awesome-icon :icon="['fas', 'user']"/></span></b-dropdown-item>
-              <b-dropdown-item v-on:click="signout" href="#">Sign out <span><font-awesome-icon :icon="['fas', 'sign-out-alt']"/></span></b-dropdown-item>
+              <b-dropdown-item variant="dark" to="/profile">Profile <span><font-awesome-icon :icon="['fas', 'user']"/></span></b-dropdown-item>
+              <b-dropdown-item variant="dark" v-on:click="signout" href="#">Sign out <span><font-awesome-icon :icon="['fas', 'sign-out-alt']"/></span></b-dropdown-item>
             </b-nav-item-dropdown>
           </b-navbar-nav>
           <b-navbar-nav class="ml-auto rightnavPad" v-else>
@@ -43,7 +44,8 @@
 <script>
   export default {
     data() {
-      return {}
+      return {
+      }
     },
     methods: {
       async signout() {
@@ -65,13 +67,15 @@
         this.$nextTick(() => {
           window.location.reload();
         });
-      },
+      }
     },
     computed: {
     },
     created() {
-      if (new Date() > new Date(this.$store.getters.jwtExpTime * 1000)) {
-        this.signout();
+      if(this.$store.getters.jwt != '') {
+        if (new Date() > new Date(this.$store.getters.jwtExpTime * 1000)) {
+          this.signout();
+        }
       }
     }
   }
@@ -97,6 +101,27 @@
       display: block;
       padding-right: 1.5rem !important;
     }
+  }
+  .navbar-nav > li > .dropdown-menu { 
+    background-color: #1c1f22;
+    color: rgba(255, 255, 255, 0.5) !important;
+  }
+  .dropdown-item {
+    color: rgba(255, 255, 255, 0.5) !important;
+  }
+   .dropdown-item:active {
+    background-color: #8f9499 !important;
+  }
+  .dropdown-item:hover {
+    background-color: #32373b !important;
+    color: rgba(255, 255, 255, 0.5) !important;
+  }
+  .dropdown-menu > li > .text-dark {
+    color: transparent;
+  }
+
+  .dropdown-menu > li > a.text-dark:hover, a.text-dark:focus {
+    color: rgba(255, 255, 255, 0.75) !important;
   }
   .text {
     margin-bottom: 0px;

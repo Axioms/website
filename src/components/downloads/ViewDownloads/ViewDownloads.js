@@ -28,7 +28,8 @@ export default {
 			hash: '',
 			popoverMessage: false,
 			link: '',
-			hideLoading: false
+			hideLoading: false,
+			filerr: "Unable to reach the server"
 		}
 	},
 	methods: {
@@ -232,30 +233,18 @@ export default {
 		this.$axios.defaults.headers.common['Authorization'] = 'Bearer' + ' ' + this.$store.getters.jwt;
 
 		this.$axios.post(process.env.VUE_APP_API + '/files/read', {})
-			.then(response => {
+			.then((response) => {
 				this.items = response.data.files;
 				this.totalRows = this.items.length;
-				this.$bvToast.toast("connected to the server!", {
-					title: "connected!",
-					toaster: 'b-toaster-top-left',
-					autoHideDelay: 1000,
-					variant: "success",
-					solid: false,
-					appendToast: false
-				})
 			})
 			.catch(error => {
 				if (error.response.data.message == "Invalid Token") {
-					this.$root.$bvToast.toast("User has been logged out", {
-						title: "Error!",
-						toaster: 'b-toaster-top-left',
-						autoHideDelay: 5000,
-						variant: "danger",
-						solid: false,
-						appendToast: false
-					});
 					this.$store.commit('setJWT', "");
 					this.$router.push("/?loggedout=true");
+				}
+				else if (error.response.data.message == "No files found.") {
+					this.filerr = "Upload a file first!";
+					this.hideLoading = true;
 				}
 				else {
 					this.$bvToast.toast("Error communicating with the server", {
