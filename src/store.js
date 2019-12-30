@@ -8,6 +8,7 @@ export default new Vuex.Store({
   state: {
     jwt: '',
     username: '',
+    usedOTP: false,
     siteUpdateDowloaded: false,
     showNotSignedInErrors: {
       notepad: true,
@@ -21,6 +22,9 @@ export default new Vuex.Store({
     },
     setUsername(state, username) {
       state.username = username;
+    },
+    setUsedOTP(state, usedOTP) {
+      state.usedOTP = usedOTP;
     },
     setSiteUpdateDowloaded(state, siteUpdateDowloaded) {
       state.siteUpdateDowloaded = siteUpdateDowloaded;
@@ -36,6 +40,7 @@ export default new Vuex.Store({
   getters: {
     jwt: state => state.jwt,
     username: state => state.username,
+    usedOTP: state => state.usedOTP,
     siteUpdateDowloaded: state => state.siteUpdateDowloaded,
     jwtData: (state, getters) => {
       return state.jwt ? JSON.parse(atob(getters.jwt.split(".")[1])) : null;

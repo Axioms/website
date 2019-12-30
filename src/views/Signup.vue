@@ -79,38 +79,34 @@
         },
         methods: {
             async register() {
-                    if(this.signup.password == this.signup.passwordVar) {
-                        this.$axios.post(process.env.VUE_APP_API + '/auth/register', {
-                            'username' : this.signup.username,
-                            'password' : this.signup.password
-                        })
-                        .then((response) => {
-                            if(response.data.message == "success") {
-                                this.$router.push({ name: 'login'});
-                            }
-                            else {
-                                1/0;    
-                            }
-                        })
-                        .catch((error) => {
-                            this.apiErr = error.response.data.message;
-                            if(this.apiErr == undefined) {
-                                this.apiErr = "Could not communicate with the server.";
-                            }
-                            this.showAlert();
-                        });
-                    } else {
-                        this.apiErr = "The passwords do not match";
-                        this.showAlert();
+                let SignupInfo = this.signup.username + ":" + this.signup.password;
+                let config = {
+                    headers: {
+                        'X-Axiom-Identity-Token': btoa(SignupInfo).replace(/=+$/,""),
                     }
-                },
-                countDownChanged(dismissCountDown) {
-                    this.dismissCountDown = dismissCountDown
-                },
-                showAlert() {
-                    this.dismissCountDown = this.dismissSecs
-                }
+                };
+                this.$axios.post(process.env.VUE_APP_API + '/auth/register', {}, config)
+                .then((response) => {
+                    if(response.data.message == "success") {
+                        this.$router.push({ name: 'login'});
+                    }
+                })
+                .catch((error) => {
+                    this.apiErr = error.response.data.message;
+                    if(this.apiErr == undefined) {
+                        this.apiErr = "Could not communicate with the server.";
+                    }
+
+                    this.showAlert();
+                });
+            },
+            countDownChanged(dismissCountDown) {
+                this.dismissCountDown = dismissCountDown
+            },
+            showAlert() {
+                this.dismissCountDown = this.dismissSecs
             }
+        }
     }
 </script>
 

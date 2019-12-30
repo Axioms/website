@@ -1,5 +1,5 @@
 <template>
-  <div class="download">
+  <div class="filemanager">
     <b-container>
       <div class="card">
 

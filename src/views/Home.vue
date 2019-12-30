@@ -3,7 +3,7 @@
     <div class="gb-border">
       <img id="mainImage" src="@/assets/logo-with-wings-dark.svg">
     </div>
-    <p>Welcome to my site!</p>
+    <p>{{ welcomeMessage }}</p>
     <b-container>
       <b-row>
         <b-col class="alert">
@@ -18,13 +18,34 @@
   export default {
       data() {
       return {
-        isSignedout: false
+        isSignedout: false,
+        welcomeMessage: '',
+      }
+    },
+    methods: {
+      weightedRand(spec) {
+        var i, j, table=[];
+        for (i in spec) {
+          // The constant 10 below should be computed based on the
+          // weights in the spec for a correct and optimal table size.
+          // E.g. the spec {0:0.999, 1:0.001} will break this impl.
+          for (j=0; j<spec[i]*10; j++) {
+            table.push(i);
+          }
+        }
+        return function() {
+          return table[Math.floor(Math.random() * table.length)];
+        }
       }
     },
     mounted() {
       if(this.$route.query.loggedout == "true") {
         this.isSignedout = true;
       }
+    },
+    created() {
+      var rand012 = this.weightedRand({"Welcome to my site!":0.4, "I get bored and make things :/":0.30, "This website has some tools I thought were neat!":0.15, "I need more of these :/":0.1, "Feeling Lucky?":0.05});
+      this.welcomeMessage = rand012();
     }
   }
 </script>
