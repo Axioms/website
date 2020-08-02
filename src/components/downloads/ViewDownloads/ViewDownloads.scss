@@ -1,0 +1,33 @@
+@media (min-width: 768px) and (max-width: 991px) {
+	.re-size {
+	display: flex;
+	}
+}
+
+.btn-purple {
+	background-color: #816ae2;
+	border-block-color: #816ae2;
+}
+
+.btn-gold {
+	background-color: #ffbf00;
+	border-block-color: #ffbf00;
+}
+
+.btn-purple:hover {
+	background-color: #816ae2;
+	border-block-color: #816ae2;
+}
+
+.btn-purple:focus, .btn-purple.focus {
+	-webkit-box-shadow: 0 0 0 0.2rem rgba(129, 106, 226, 0.5);
+	box-shadow: 0 0 0 0.2rem rgba(129, 106, 226, 0.5);
+}
+
+.displayTable {
+	display: table;
+}
+
+#cheeky-downloads {
+	display: none;
+}
